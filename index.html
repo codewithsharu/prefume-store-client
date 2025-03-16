@@ -1,0 +1,1721 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Nav & Banner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        /* Remove main styles */
+        main {
+            /* Remove this entirely */
+        }
+        /* Update banner styles */
+        .banner {
+           
+            min-height: 100vh;
+            background-image: url('./banner1.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 98%;
+            margin: 120px auto 0 auto; /* Center horizontally and maintain top space */
+            padding-top: 120px; /* Account for navbar */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Update section styles */
+        section {
+            margin: 40px 0; /* Add vertical spacing between sections */
+            padding: 60px 5%; /* Consistent padding */
+            box-sizing: border-box;
+            border-radius: 10px; /* Rounded corners for sections */
+            background: rgba(255, 255, 255, 0.9); /* Light background for contrast */
+        }
+
+        /* Update navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+          
+        }
+
+        @media screen and (max-width: 768px) {
+            .banner {
+                padding-top: 80px;
+            }
+            
+            section {
+                padding: 60px 3%;
+            }
+        }
+
+        /* Navigation styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+          
+          background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%;
+            transition: all 0.3s ease;
+            height: 120px;
+            border-bottom: 2px solid rgba(205, 175, 75, 0.3);
+        }
+
+        .navbar .nav-links {
+            margin-left: auto;  /* Pushes nav links to the right */
+        }
+
+        .navbar .contact-us {
+            margin-left: 20px; /* Adds space after the nav links */
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #8B7355;
+            font-weight: 600;
+            font-size: 18px;
+            transition: color 0.3s;
+            position: relative;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover {
+            color: #DAA520;
+        }
+
+        /* Add underline effect for active/hover state */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #DAA520;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Style for active nav link */
+        .nav-links a.active {
+            color: #DAA520;
+            font-weight: 700;
+        }
+
+        /* Banner styles */
+        .banner.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Add this to ensure proper scrolling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        /* Add styles for the certification sticker */
+        .certification-sticker {
+            height: 120px;
+            margin-left: 30px;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Media queries for responsive design */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .certification-sticker {
+                display: none;  /* Hide the sticker on mobile */
+            }
+
+            .navbar {
+                height: 80px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 3%;
+            }
+        }
+
+        /* Company Description styles */
+        .company-description {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.9));
+            border-radius: 20px;
+            margin: 40px auto;
+        }
+
+        .elegant-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            line-height: 1.6;
+            color: #2c3e50;
+            letter-spacing: 0.8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .luxury-text {
+            color: #DAA520 !important;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .decorative-line {
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #DAA520, transparent);
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #DAA520;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .decorative-line::before {
+            left: 0;
+        }
+
+        .decorative-line::after {
+            right: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .about-us {
+                padding: 60px 30px;
+            }
+            
+            .about-us h2 {
+                font-size: 2.8rem;
+            }
+            
+            .about-us p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+            
+            .elegant-heading {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Add a class for transparent navbar */
+        .navbar.transparent {
+            background-color: transparent;
+        }
+
+       
+        /* Fragrances Section */
+        .fragrances-section {
+            min-height: 80vh;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.95), rgba(218, 165, 32, 0.85));
+            position: relative;
+            overflow: hidden;
+            padding: 100px 8%;
+            display: flex;
+            align-items: center;
+        }
+
+        .fragrances-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./banner.jpeg') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .fragrances-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .fragrances-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #FFD700 !important;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .fragrances-content p {
+            font-size: 1.4rem;
+            color: #fff !important;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .read-more-btn {
+            background: #FFD700;
+            color: #2c3e50;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-3px);
+            background: #fff;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .small-banners-container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .small-banners {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: space-between;
+            padding: 40px 0;
+        }
+
+        .small-banner {
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            text-align: left;
+            color: white;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: calc(50% - 10px); /* Adjust width for two banners */
+            margin: 10px 0;
+            padding-left: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+            background: linear-gradient(135deg, #2c3e50, #DAA520) !important;
+        }
+
+        .small-banner.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .small-banner:nth-child(1) {
+            background-image: url('./banner.jpeg'); /* Replace with your image path */
+        }
+
+        .small-banner:nth-child(2) {
+            background-image: url('./banner.jpeg'); /* Replace with your image path */
+        }
+
+        .small-banner h2 {
+            font-size: 2rem;
+            color: #FFD700 !important;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .small-banner h2.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .small-banner p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+            max-width: 80%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .small-banner p.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .small-banner a {
+            font-size: 1.5rem;
+            color: #FFD700 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+            border-color: #FFD700 !important;
+        }
+
+        .small-banner a.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .small-banner a:hover {
+            color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .small-banners {
+                flex-direction: column;
+            }
+
+            .small-banner {
+                width: 100%; /* Full width on smaller screens */
+                margin: 10px 0;
+            }
+        }
+
+        /* Initial state for scroll animation */
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Final state when in view */
+        .scroll-animation.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Production Facility styles */
+        .production-facility {
+            padding: 120px 8%;
+            background: linear-gradient(135deg, #fff, #f8f9fa) !important;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin: 60px auto;
+            max-width: 1600px;
+        }
+
+        .production-facility::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+
+        .production-facility h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #2c3e50 !important;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .production-facility .highlight {
+            color: #DAA520 !important;
+            font-weight: 400;
+        }
+
+        .production-facility p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #555 !important;
+            margin-bottom: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            max-width: 1000px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: #DAA520 !important;
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #DAA520;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .contact-link:hover {
+            color: #2c3e50 !important;
+            border-bottom-color: #2c3e50;
+            transform: translateX(10px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .fragrances-section {
+                padding: 80px 5%;
+                min-height: 60vh;
+            }
+
+            .fragrances-content {
+                padding: 30px;
+                max-width: 100%;
+            }
+
+            .fragrances-content h2 {
+                font-size: 2.8rem;
+            }
+
+            .fragrances-content p {
+                font-size: 1.2rem;
+            }
+
+            .production-facility {
+                padding: 80px 5%;
+            }
+
+            .production-facility h2 {
+                font-size: 2.8rem;
+            }
+
+            .production-facility p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .video-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 50px 0;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(218, 165, 32, 0.7));
+        }
+
+        .full-width-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform-origin: center;
+            filter: brightness(0.8);
+            transition: all 0.5s ease;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #FFD700;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-overlay h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .video-overlay p {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Add a subtle gradient overlay */
+        .video-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.3), rgba(218, 165, 32, 0.3));
+            pointer-events: none;
+        }
+
+        /* Footer styles */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            color: #fff;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 40px;
+        }
+
+        .footer-contact, .footer-social {
+            text-align: left;
+        }
+
+        .footer h4 {
+            color: #DAA520;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .footer-contact p {
+            color: #fff;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #DAA520;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-sections {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .footer-contact, .footer-social {
+                text-align: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Featured Products Section */
+        .featured-products {
+            padding: 80px 5%;
+            background: none !important;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            color: #DAA520;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .product-link {
+            color: #DAA520;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .product-link:hover {
+            color: #B8860B;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #ffffff, #FFF8DC);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(218, 165, 32, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(218, 165, 32, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #DAA520;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Update navbar styles for new navigation */
+        .nav-links {
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(218, 165, 32, 0.1);
+        }
+
+        @media screen and (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Enhanced Responsive Styles */
+        @media screen and (max-width: 1200px) {
+            .company-description h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-us {
+                padding: 80px 40px;
+            }
+
+            .about-us h2 {
+                font-size: 2.8rem;
+            }
+
+            .fragrances-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .navbar {
+                padding: 1rem 3%;
+            }
+
+            .production-facility {
+                padding: 60px 30px;
+            }
+
+            .production-facility h2 {
+                font-size: 2.8rem;
+            }
+
+            .values-container {
+                gap: 20px;
+            }
+
+            .value-item {
+                padding: 30px 20px;
+            }
+
+            .footer-sections {
+                gap: 40px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                height: 70px;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+            .banner {
+                min-height: 70vh;
+            }
+
+            .company-description {
+                padding: 60px 20px;
+            }
+
+            .elegant-heading {
+                font-size: 1.8rem;
+            }
+
+            .fragrances-section {
+                padding: 60px 20px;
+            }
+
+            .fragrances-content {
+                max-width: 100%;
+            }
+
+            .fragrances-content h2 {
+                font-size: 2rem;
+            }
+
+            .fragrances-content p {
+                font-size: 1rem;
+            }
+
+            .about-us {
+                padding: 60px 20px;
+            }
+
+            .about-us h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-us p {
+                font-size: 1rem;
+            }
+
+            .production-facility h2 {
+                font-size: 2.2rem;
+            }
+
+            .production-facility p {
+                font-size: 1rem;
+            }
+
+            .values-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .value-item {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .featured-products {
+                padding: 60px 20px;
+            }
+
+            .products-grid {
+                gap: 20px;
+            }
+
+            .product-card {
+                padding: 30px 20px;
+            }
+
+            .video-section {
+                padding: 30px 0;
+            }
+
+            .video-overlay h2 {
+                font-size: 2rem;
+            }
+
+            .video-overlay p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .navbar {
+                padding: 1rem 15px;
+                height: 60px;
+            }
+
+            .logo {
+                height: 30px;
+            }
+
+            .company-description h2 {
+                font-size: 1.5rem;
+            }
+
+            .fragrances-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-us h2 {
+                font-size: 1.8rem;
+            }
+
+            .production-facility {
+                padding: 40px 20px;
+            }
+
+            .production-facility h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .footer {
+                padding: 40px 0 20px;
+            }
+
+            .footer-logo-img {
+                height: 40px;
+            }
+
+            .footer-sections {
+                gap: 30px;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) {
+            .nav-links a:hover::after {
+                transform: none;
+            }
+
+            .product-card:hover {
+                transform: none;
+            }
+
+            .feature-card:hover {
+                transform: none;
+            }
+
+            .social-icons a:hover {
+                transform: none;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffffff, #FFF8DC);
+        }
+
+        main {
+            margin-top: 120px; /* Height of navbar */
+            width: 100%;
+        }
+
+        section {
+            width: 100%;
+            margin: 0;
+            padding: 80px 5%;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 1024px) {
+            main {
+                margin-top: 80px;
+            }
+            
+            .navbar {
+                height: 80px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            section {
+                padding: 60px 3%;
+            }
+        }
+
+        /* Add these styles to remove scrollbar but maintain scroll functionality */
+        html {
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        }
+
+        html::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
+        }
+
+        body {
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+        }
+
+        /* Enhanced About Us Section */
+        .about-us {
+            padding: 120px 80px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 240, 0.95));
+            text-align: left;
+            max-width: 1400px;
+            margin: 40px auto;
+            position: relative;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .about-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+
+        .about-us h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .about-us h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #DAA520;
+        }
+
+        .about-us p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 800px;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .about-btn {
+            background: transparent;
+            color: #DAA520;
+            border: 2px solid #DAA520;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 30px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-btn:hover {
+            background: #DAA520;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(218, 165, 32, 0.2);
+        }
+
+        /* Enhanced Values Section */
+        .values-section {
+            padding: 100px 5%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.9));
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 1400px;
+        }
+
+        .values-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .values-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-item {
+            flex: 1 1 calc(30% - 20px);
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(218, 165, 32, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(218, 165, 32, 0.15);
+        }
+
+        .value-icon {
+            color: #DAA520;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover .value-icon {
+            transform: scale(1.1);
+            color: #FFD700;
+        }
+
+        .value-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .value-item p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .values-section {
+                padding: 60px 20px;
+            }
+
+            .values-title {
+                font-size: 2.5rem;
+            }
+
+            .values-container {
+                gap: 30px;
+            }
+
+            .value-item {
+                padding: 30px;
+            }
+
+            .value-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .value-item p {
+                font-size: 1rem;
+            }
+        }
+
+        .video-section:hover .video-overlay {
+            opacity: 1; /* Show overlay on hover */
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+
+        .img-container {
+            flex: 1 1 calc(25% - 10px); /* Four images per row */
+            margin: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .img-container img:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal .caption {
+            color: #fff;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <img src="./aarav-logo.svg" alt="Logo" class="logo">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="products.html"><i class="fas fa-box"></i> Products</a>
+            <a href="rfq.html"><i class="fas fa-file-contract"></i> RFQ</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        </div>
+        <!-- <img src="./navbarsticker.png" alt="Great Place to Work Certified" class="certification-sticker"> -->
+    </nav>
+
+    <br>
+    
+    <!-- Main content -->
+    <main>
+        <!-- Banner Section -->
+        <section id="home" class="banner">
+            <!-- Banner content here -->
+        </section>
+
+        <!-- Rest of the sections -->
+        <section class="company-description">
+            <div class="luxury-container">
+                <h2 class="elegant-heading">
+                    <span class="highlight luxury-text">AARAV</span> <span class="typed-text"></span>
+                </h2>
+                <div class="decorative-line"></div>
+            </div>
+        </section>
+        <script>
+            const text = "is a distinguished name in the world of exquisite fragrances and refined flavours, crafting bespoke solutions that embody unparalleled luxury and sophistication.";
+            const typedTextSpan = document.querySelector(".typed-text");
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < text.length) {
+                    typedTextSpan.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 50); // Adjust typing speed here (milliseconds)
+                }
+            }
+
+            // Start typing animation when section comes into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        type();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            observer.observe(document.querySelector('.company-description'));
+        </script>
+        <!-- About Us Section -->
+        <div class="about-us">
+            <h2>ABOUT <span class="highlight">US</span></h2>
+            <p>For over three decades, we have been dedicated to enriching the human experience through the art and science of taste and smell. Our deep understanding of these primal senses, refined through generations of expertise, allows us to create extraordinary sensory experiences.</p>
+                  <div class="about-cta">
+                <button class="about-btn">Learn More</button>
+               
+            </div>
+        </div>
+
+        <!-- Fragrances Section with Banner -->
+        <section class="fragrances-section" style="background: linear-gradient(135deg, #2c3e50, #DAA520); color: #fff;">
+            <div class="fragrances-content">
+                <h2 style="color: #FFD700;">INDULGE IN LUXURY</h2>
+                <p style="color: #f5e6d3;">Discover our exquisite collection of refined fragrances, meticulously crafted to elevate your senses and transport you to a world of sophisticated elegance.</p>
+                <button class="read-more-btn" style="background: #FFD700; color: #2c3e50; border: none;">Experience Luxury</button>
+            </div>
+        </section>
+
+        <!-- Production Facility Section -->
+        <!-- <div class="production-facility" style="background: none !important; border-radius: 20px; box-shadow: none; padding: 80px 60px; margin: 40px auto;">
+            <h2 style="color: #2c3e50 !important; font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; text-shadow: none;">ARTISANAL <span class="highlight" style="color: #ffffff; font-weight: 300;">EXCELLENCE</span></h2>
+            <p style="color: #ffffff; font-family: 'Montserrat', sans-serif; line-height: 2; font-size: 1.2rem; text-shadow: none;">Within our distinguished ISO 9001:2015 & 22000:2005 certified sanctuary in Wada, we orchestrate the creation of the world's most refined fragrances. Our state-of-the-art facility, a harmonious blend of innovative technology and timeless craftsmanship, stands as a testament to perfection. Here, our master artisans, wielding both traditional wisdom and cutting-edge expertise, craft extraordinary olfactory masterpieces that define luxury.</p>
+            <p style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-top: 30px;"><a href="#contact" class="contact-link" style="color: #FFD700; text-decoration: none; border-bottom: 2px solid #FFD700; padding-bottom: 5px; transition: all 0.3s ease;">Begin Your Extraordinary Journey</a> into the realm of unparalleled fragrance mastery.</p>
+        </div> -->
+
+        <div class="values-section">
+            <h2 class="values-title">Our Guiding Principles</h2>
+            <div class="values-container">
+                <div class="value-item">
+                    <i class="fas fa-balance-scale value-icon"></i>
+                    <h3>Balance</h3>
+                    <p>We believe in creating harmony between tradition and innovation, nature and technology, crafting perfect equilibrium in every creation while maintaining sustainable business practices.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-lightbulb value-icon"></i>
+                    <h3>Clarity</h3>
+                    <p>Our commitment to transparency and precision guides every step of our process, from conception to creation, ensuring clear communication and purposeful execution.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-shield-alt value-icon"></i>
+                    <h3>Integrity</h3>
+                    <p>We uphold the highest standards of ethical business practices, ensuring quality, authenticity, and trust in every relationship and product we create.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery">
+            <div class="img-container">
+                <img
+                    src="https://images.unsplash.com/photo-1690790427878-ecf29d8b686b?q=80&w=640"
+                    alt="No elegance is possible without perfume"
+                    data-original="1887"
+                />
+            </div>
+            <div class="img-container">
+                <img
+                    src="https://images.unsplash.com/photo-1696218614256-b74c0bcde0d5?q=80&w=640"
+                    alt="It is the unseen, unforgettable, ultimate accessory"
+                    data-original="1887"
+                />
+            </div>
+            <div class="img-container">
+                <img
+                    src="https://images.unsplash.com/photo-1696218359361-b088f32f86b8?q=80&w=640"
+                    alt="A perfume is like a piece of clothing, a message"
+                    data-original="1887"
+                />
+            </div>
+            <div class="img-container">
+                <img
+                    src="https://images.unsplash.com/photo-1690790591188-3503c1a4dcb6?q=80&w=640"
+                    alt="Perfume is like a parenthesis, a moment of freedom"
+                    data-original="1887"
+                />
+            </div>
+        </div>
+        <div class="modal">
+            <img src="" alt="" class="full-img" />
+            <p class="caption"></p>
+        </div>
+
+        <section class="featured-products">
+            <h2 class="section-title values-title">Featured Collections</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-spray-can-sparkles"></i>
+                    </div>
+                    <h3>Luxury Perfumes</h3>
+                    <p>Discover our signature collection of premium fragrances</p>
+                    <a href="#" class="product-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Natural Essences</h3>
+                    <p>Pure and authentic natural extracts</p>
+                    <a href="#" class="product-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Custom Blends</h3>
+                    <p>Tailored fragrances for your unique needs</p>
+                    <a href="#" class="product-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <div class="video-section">
+            <video class="full-width-video" autoplay muted loop>
+                <source src="productvid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay">
+                <h2>Experience Excellence</h2>
+                <p>Crafting Premium Fragrances</p>
+            </div>
+        </div>
+
+        <section class="why-choose-us">
+            <h2 class="section-title values-title">Why Choose AARAV</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>Premium Quality</h3>
+                    <p>ISO certified manufacturing facility delivering world-class fragrances and flavors</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored fragrance and flavor solutions to meet your specific requirements</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Reach</h3>
+                    <p>Serving clients worldwide with innovative and sustainable solutions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Expert Support</h3>
+                    <p>Dedicated team of professionals to guide you through every step</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./aarav-logo.svg" alt="AARAV" class="footer-logo-img">
+            </div>
+            <div class="footer-sections">
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone-alt"></i> +91 22 41130200</p>
+                    <p><i class="fas fa-envelope"></i> info@aarav.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 AARAV Fragrances & Flavours Pvt Ltd.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar');
+            const banner = document.querySelector('.banner');
+
+            // Add hover event listeners to the banner
+            banner.addEventListener('mouseenter', function() {
+                navbar.classList.add('transparent');
+            });
+
+            banner.addEventListener('mouseleave', function() {
+                navbar.classList.remove('transparent');
+            });
+
+            document.querySelector('.hamburger').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.hamburger').classList.remove('active');
+                });
+            });
+
+            // Intersection Observer for fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        // For elements with children that need to fade in
+                        entry.target.querySelectorAll('h2, p, button, a').forEach(child => {
+                            child.classList.add('fade-in');
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all sections and elements that need fade-in
+            const elements = document.querySelectorAll('.banner, .company-description, .about-us, .fragrances-section, .small-banner, .production-facility');
+            elements.forEach(element => observer.observe(element));
+
+            // Register GSAP ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Select all relevant elements for scroll animations
+            const allElements = document.querySelectorAll('div, h2, h3, p, button, a');
+
+            // Apply fade-up animation to each element
+            allElements.forEach((element) => {
+                gsap.from(element, {
+                    opacity: 0,
+                    y: 30, // Move up from below
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%", // Start animation when the top of the element is at 80% of the viewport
+                        end: "top 20%",   // End animation when the top of the element is at 20% of the viewport
+                        scrub: 1,        // Smooth scrubbing
+                        toggleActions: "play none none reverse" // Play on enter, reverse on leave
+                    }
+                });
+            });
+
+            // Parallax effect for backgrounds
+            gsap.to('.fragrances-section', {
+                backgroundPosition: '50% 100%',
+                ease: "none",
+                scrollTrigger: {
+                    trigger: '.fragrances-section',
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>
