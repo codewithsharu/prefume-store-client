@@ -153,6 +153,7 @@
         }
 
         main {
+            margin-top: 0; /* Adjusted to remove the space above the banner */
             width: 100%;
         }
 
@@ -1516,9 +1517,13 @@
     <main>
         <!-- Banner Section -->
         <section id="home" class="banner" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; width: 98%; margin: 120px auto 0 auto; padding-top: 120px; position: relative; overflow: hidden;">
-            <video id="bannerVideo" loop muted playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+            <video id="bannerVideo" loop muted playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.2;">
                 <source src="./bannervideo.mp4" type="video/mp4">
             </video>
+            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 1;">
+                <h1 style="color: #fff; font-size: 4rem; text-align: center; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif;">Discover Pure Luxury</h1>
+                <p style="color: #fff; font-size: 2rem; text-align: center; margin-bottom: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif;">Artistry in Every Essence</p>
+            </div>
             <style>
                 #home.banner:hover #bannerVideo {
                     transform: scale(1.05);
@@ -1532,18 +1537,33 @@
                     perspective: 1000px;
                 }
 
+                .banner-overlay {
+                    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7))!important;
+                }
+
                 @media screen and (max-width: 768px) {
                     #home.banner {
                         margin-top: 80px;
                         padding-top: 60px;
-                        min-height: 60vh;
+                        min-height: 30vh;
+                        width: 70%;
+                    }
+                    .banner-overlay h1 {
+                        font-size: 2rem;
+                    }
+                    .banner-overlay p:nth-of-type(1) {
+                        font-size: 1.2rem;
+                    }
+                    .banner-overlay p:nth-of-type(2) {
+                        font-size: 1rem;
+                        padding: 0 20px;
                     }
                 }
                 @media screen and (max-width: 480px) {
                     #home.banner {
-                        width: 100%;
+                        width: 70%;
                         margin: 60px auto 0 auto;
-                        min-height: 50vh;
+                        min-height: 20vh;
                     }
                 }
             </style>
