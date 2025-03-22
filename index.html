@@ -77,41 +77,39 @@
             transition: all 0.3s ease;
         }
 
-        .navbar .nav-links {
-            margin-left: auto;
-        }
+     
 
-        .navbar .contact-us {
-            margin-left: 20px;
-        }
-
+  
         .logo {
             height: 20px;
         }
 
+      
+
         .nav-links {
             display: flex;
-            gap: 0.7rem;
+            gap: rem; /* Updated gap for spacing */
         }
 
         .nav-links a {
             text-decoration: none;
             color: #8B7355;
             font-weight: 600;
-            font-size: 18px;
-            transition: color 0.3s;
+            font-size: 18px; /* Updated font size */
+            transition: color 0.3s, transform 0.3s;
             position: relative;
             text-transform: capitalize;
         }
 
         .nav-links a:hover {
             color: #DAA520;
+            transform: scale(1.05); /* Added scale effect on hover */
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 70%;
+            width: 100%;
             height: 2px;
             background: #DAA520;
             bottom: -5px;
@@ -172,12 +170,7 @@
         }
 
         /* Add styles for the certification sticker */
-        .certification-sticker {
-            height: 120px;
-            margin-left: 30px;
-        }
-
-        /* Hamburger menu styles */
+      Hamburger menu styles */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -230,7 +223,7 @@
             }
 
             .nav-links a {
-                font-size: 16px;
+                font-size: 10px;
             }
         }
 
@@ -876,10 +869,7 @@
             font-size: 1rem;
         }
 
-        /* Update navbar styles for new navigation */
-        .nav-links {
-            gap: 1rem;
-        }
+  
 
         .nav-links a {
             font-size: 1.1rem;
@@ -1516,13 +1506,13 @@
             <span></span>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
-            <a href="fragrances.html" ><i class="fas fa-box"></i> Fragrances</a>
-            <a href="flavours.html"><i class="fas fa-box"></i> Flavours</a>
-            <a href="ingredients.html"><i class="fas fa-box"></i> Ingredients</a>
-            <a href="rfq.html"><i class="fas fa-file-contract"></i> RFQ</a>
-            <a href="contact.html"  ><i class="fas fa-envelope"></i> Contact Us</a>
-            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="index.html" class="active"><i class="fas fa-home"></i>Home</a>
+            <a href="fragrances.html"><i class="fas fa-box"></i>Fragrances</a>
+            <a href="flavours.html"><i class="fas fa-box"></i>Flavours</a>
+            <a href="ingredients.html"><i class="fas fa-box"></i>Ingredients</a>
+            <a href="rfq.html"><i class="fas fa-file-contract"></i>RFQ</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i>Contact Us</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i>About Us</a>
         </div>
         <!-- <img src="./navbarsticker.png" alt="Great Place to Work Certified" class="certification-sticker"> -->
     </nav>
