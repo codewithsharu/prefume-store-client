@@ -360,7 +360,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <img style="height: 75px;" src="./aarav-logo.svg" alt="Logo" class="logo">
+        <img style="height: 50px;" src="./logo.png" alt="Logo" class="logo">
         <div class="hamburger">
             <span></span>
             <span></span>
@@ -368,9 +368,11 @@
         </div>
         <div class="nav-links">
             <a href="index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="products.html"><i class="fas fa-box"></i> Products</a>
+            <a href="fragrances.html" ><i class="fas fa-box"></i> Fragrances</a>
+            <a href="flavours.html"><i class="fas fa-box"></i> Flavours</a>
+            <a href="ingredients.html"><i class="fas fa-box"></i> Ingredients</a>
             <a href="rfq.html" class="active"><i class="fas fa-file-contract"></i> RFQ</a>
-            <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+            <a href="contact.html" ><i class="fas fa-envelope"></i> Contact Us</a>
             <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
         </div>
     </nav>
@@ -405,12 +407,16 @@
             
             <div class="form-group">
                 <label><i class="fas fa-box form-icon"></i>Product Category</label>
-                <select required>
+                <select id="product-category" required onchange="updateSubcategories()">
                     <option value="">Select a category</option>
                     <option value="fragrances">Fragrances</option>
                     <option value="flavours">Flavours</option>
-                    <option value="essential-oils">Essential Oils</option>
-                    <option value="aroma-chemicals">Aroma Chemicals</option>
+                </select>
+            </div>
+            <div class="form-group" id="subcategory-group" style="display: none;">
+                <label><i class="fas fa-box form-icon"></i>Subcategory</label>
+                <select id="subcategory" required>
+                    <!-- Subcategories will be populated here -->
                 </select>
             </div>
             
@@ -470,6 +476,30 @@
                 });
             });
         });
+
+        function updateSubcategories() {
+            const categorySelect = document.getElementById('product-category');
+            const subcategorySelect = document.getElementById('subcategory');
+            const subcategoryGroup = document.getElementById('subcategory-group');
+
+            // Clear previous subcategories
+            subcategorySelect.innerHTML = '';
+            subcategoryGroup.style.display = 'none';
+
+            if (categorySelect.value === 'fragrances') {
+                subcategorySelect.innerHTML += '<option value="fabric-care">Fabric Care</option>';
+                subcategorySelect.innerHTML += '<option value="beauty-personal-care">Beauty and Personal Care</option>';
+                subcategorySelect.innerHTML += '<option value="fine-fragrances">Fine Fragrances</option>';
+                subcategorySelect.innerHTML += '<option value="home-care">Home Care</option>';
+                subcategorySelect.innerHTML += '<option value="incense">Incense</option>';
+                subcategoryGroup.style.display = 'block';
+            } else if (categorySelect.value === 'flavours') {
+                subcategorySelect.innerHTML += '<option value="bakery">Bakery</option>';
+                subcategorySelect.innerHTML += '<option value="beverages">Beverages</option>';
+                subcategorySelect.innerHTML += '<option value="dairy">Dairy</option>';
+                subcategoryGroup.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>

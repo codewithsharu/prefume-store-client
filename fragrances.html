@@ -1,0 +1,553 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Fragrances - Luxury Perfumes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+            background-color: #f9f6f0;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        /* Keep original navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            height: 120px;
+            border-bottom: 2px solid rgba(205, 175, 75, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links {
+            margin-left: auto;
+        }
+
+        .navbar .contact-us {
+            margin-left: 20px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #8B7355;
+            font-weight: 600;
+            font-size: 18px;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover {
+            color: #DAA520;
+            transform: scale(1.05);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #DAA520;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a.active {
+            color: #DAA520;
+            font-weight: 700;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        
+
+        /* Keep original footer styles */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            color: #fff;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            border-radius: 10px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 40px;
+        }
+
+        .footer-contact, .footer-social {
+            text-align: left;
+        }
+
+        .footer h4 {
+            color: #DAA520;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .footer-contact p {
+            color: #fff;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #DAA520;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* Media queries */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .navbar {
+                height: 80px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .products-heading h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 3%;
+            }
+
+            .products-heading h1 {
+                font-size: 2rem;
+            }
+
+            .products-heading p {
+                font-size: 1rem;
+            }
+
+            .footer-sections {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .footer-contact, .footer-social {
+                text-align: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Updated styles for a premium look */
+        .banner {
+            height: 450px; /* Increased height for a more impactful banner */
+            background: linear-gradient(rgba(218, 165, 32, 0.8), rgba(218, 165, 32, 0.8)), url('./banner1.png') no-repeat center center; /* Added gradient overlay */
+            background-size: cover; /* Ensure the background image covers the area */
+            color: white;
+            font-size: 3.5rem; /* Increased font size for better readability */
+            text-align: center;
+            position: relative;
+            padding: 40px; /* Increased padding for better spacing */
+            margin-top: 120px;
+            border-radius: 10px; /* Added border radius for softer edges */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+        }
+
+        .banner-image {
+            position: absolute; /* Position the image absolutely */
+            top: 0;
+            left: 0;
+            width: 100%; /* Make the image cover the banner */
+            height: 100%; /* Make the image cover the banner */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+            opacity: 0.6; /* Adjust opacity for a subtle background effect */
+        }
+
+        .banner h1 {
+            position: relative; /* Position the text above the image */
+            z-index: 1; /* Ensure the text is above the image */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for better contrast */
+        }
+
+        /* Media queries for responsiveness */
+        @media screen and (max-width: 768px) {
+            .fabric-care {
+                flex-direction: column; /* Stack elements vertically */
+                text-align: center; /* Center text for smaller screens */
+            }
+            .fabric-care-text {
+                padding-right: 0; /* Remove right padding */
+                margin-bottom: 20px; /* Add margin below text */
+            }
+            .fabric-care-image {
+                max-width: 100%; /* Allow image to take full width */
+            }
+        }
+
+        /* Media queries for responsiveness */
+        @media screen and (max-width: 768px) {
+            .beauty-personal-care {
+                flex-direction: column; /* Stack elements vertically */
+                text-align: center; /* Center text for smaller screens */
+            }
+            .beauty-image {
+                max-width: 100%; /* Allow image to take full width */
+                margin-bottom: 20px; /* Add margin below image */
+            }
+            .beauty-text {
+                padding-left: 0; /* Remove left padding */
+            }
+        }
+
+        .signature-fragrances {
+            background-color: #fff; /* Changed background to white for contrast */
+            border-radius: 10px; /* Added border radius */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+            padding: 40px 20px; /* Increased padding */
+            margin: 40px 0; /* Added margin for spacing */
+            transition: transform 0.3s; /* Added transition for hover effect */
+        }
+
+        .signature-fragrances:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .fragrance-features .feature {
+            transition: transform 0.3s; /* Added transition for hover effect */
+        }
+
+        .fragrance-features .feature:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .fabric-care, .beauty-personal-care {
+            background-color: #f9f6f0; /* Keep the background color */
+            border-radius: 10px; /* Added border radius */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+            padding: 40px 20px; /* Increased padding */
+            margin: 40px 0; /* Added margin for spacing */
+        }
+
+        .fabric-care h2, .beauty-personal-care h2 {
+            background: linear-gradient(90deg, #DAA520, #8B7355); /* Gradient for headings */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .signature-fragrances .feature i {
+            font-size: 80px; /* Increased icon size for better visibility */
+        }
+
+        .fabric-care-image {
+            flex: 1; 
+            max-width: 400px; /* Increased max width for the fabric care image */
+         
+        }
+
+        .beauty-image {
+            flex: 1; 
+            max-width: 400px; /* Increased max width for the beauty image */
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <img src="./banner1.png" alt="Fragrances Banner" class="banner-image">
+        <h1 style="font-size: clamp(3rem, 9vw, 5rem); text-align: center;">Fragrances</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <img style="height: 50px;" src="./logo.png" alt="Logo" class="logo">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="fragrances.html" class="active" ><i class="fas fa-box"></i> Fragrances</a>
+            <a href="flavours.html"><i class="fas fa-box"></i> Flavours</a>
+            <a href="ingredients.html"><i class="fas fa-box"></i> Ingredients</a>
+            <a href="rfq.html"><i class="fas fa-file-contract"></i> RFQ</a>
+            <a href="contact.html" ><i class="fas fa-envelope"></i> Contact Us</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        </div>
+    </nav>
+
+    <!-- New Section -->
+    <section class="signature-fragrances" style="text-align: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="font-size: 2.5rem; color: #8B7355; margin-bottom: 20px;">Signature Fragrances</h2>
+        <p style="font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.6;">While vision reaches your brain, fragrance touches the heart. Fragrance provides a strong emotional relationship between your product and your consumer. Signature fragrances, when achieved correctly, are the emotional identities that build lasting bonds. Our perfumers understand this craft. It is a confluence of science and art. Defining the personality of a product and pairing it with the desired fragrance is a process that we take pride in mastering.</p>
+       
+    </section>
+
+    <!-- Fabric Care Section -->
+    <section class="fabric-care" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="fabric-care-text" style="flex: 1; max-width: 600px; text-align: left; padding-right: 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: left; background: linear-gradient(90deg, #8B7355, #DAA520); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                FABRIC CARE
+            </h2>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                There is a strong link between fragrance and perception of performance in fabric care. Consumers actively search for fragrances that convey an impression of cleanliness, softness, and freshness.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                At Abha International, we seek to give the consumer the best fabric care experience possible. We create fragrances that provide the desired ambience. Our solution caters to each step, whether in a dry sniff, bloom while washing, or retention after wash.
+            </p>
+        </div>
+        <div class="fabric-care-image" style="flex: 1; max-width: 300px; ">
+            <img src="./fabriccare.jpg" alt="Fabric Care" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+        </div>
+    </section>
+
+    <!-- Beauty and Personal Care Section -->
+    <section class="beauty-personal-care" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="beauty-image" style="flex: 1; max-width: 300px; ">
+            <img src="./fabriccare.jpg" alt="Beauty and Personal Care" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+        </div>
+        <div class="beauty-text" style="flex: 1; max-width: 600px; text-align: left; padding-left: 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #8B7355;">BEAUTY AND PERSONAL CARE</h2>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                Personal care products achieve use-value through fragrance. While using the product, users rely on the scent followed by texture to determine if the product is working.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                Whether gentle care or energising freshness, the product's promise is augmented through fragrance. At Abha International, we understand the functional dynamics of personal care fragrances. We create an ambience that satisfies the reason consumers purchased a product—clean or gentle, calming or refreshing, bold or playful.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                In addition to crafting an appealing ambience, we deliver excellent performance in all technical aspects. This includes wash bloom, diffusion, and post-wash retention for wash-off products. We also provide excellent dry sniff and retention for the leave-on range of products.
+            </p>
+        </div>
+    </section>
+
+    <!-- Fine Fragrance Section -->
+    <section class="fabric-care" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="fabric-care-text" style="flex: 1; max-width: 600px; text-align: left; padding-right: 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: left; background: linear-gradient(90deg, #8B7355, #DAA520); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                FINE FRAGRANCE
+            </h2>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                Fine fragrance is a delicate matter. Through fine fragrance, we choose a scent that represents us. It becomes an extension of our being reaching out to others.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                The perfumers from our Maison understand the psychology of scent, and we have the capacity to deliver at scale. From following global trends to proposing trendsetters, we offer fragrances across the spectrum that serve the emotional and technical needs of perfumery, including diffusion, retention and odour masking.
+            </p>
+        </div>
+        <div class="fabric-care-image" style="flex: 1; max-width: 300px; ">
+            <img src="./fabriccare.jpg" alt="Fine Fragrance" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+        </div>
+    </section>
+
+    <!-- Beauty and Personal Care Section -->
+    <section class="beauty-personal-care" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="beauty-image" style="flex: 1; max-width: 300px; ">
+            <img src="./fabriccare.jpg" alt="Home Care" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+        </div>
+        <div class="beauty-text" style="flex: 1; max-width: 600px; text-align: left; padding-left: 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #8B7355;">HOME CARE</h2>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                What is the first thing someone does after cleaning - smell it. The right fragrance triggers a sense of satisfaction and converts a chore into achievement.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                A clean and fresh smelling fragrance signals power and performance in a cleaning product.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                At Abha International, we create powerful home cleaning and care fragrances that are stable in the harshest of bases, mask malodors and fill homes with a lasting pleasant scent.
+            </p>
+        </div>
+    </section>
+
+    
+    <!-- Fabric Care Section -->
+    <section class="fabric-care" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="fabric-care-text" style="flex: 1; max-width: 600px; text-align: left; padding-right: 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: left; background: linear-gradient(90deg, #8B7355, #DAA520); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                INCENSE
+            </h2>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                Apart of cultures across the globe, incense has become an integral part of spiritual pursuits. Creating an atmosphere of sanctity, the act of burning incense is connected to purity.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                Apart from traditional Indian incense, Bakhour plays a central part in the daily cultural habits of millions in the MENA region.
+            </p>
+            <p style="font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+                Preferences for incense are as varied as the cultures and geographies they serve. At Abha International, we have the knowledge to help you discover preferences and provide a product with excellent performance in diffusion, volume and retention.
+            </p>
+        </div>
+        <div class="fabric-care-image" style="flex: 1; max-width: 300px; ">
+            <img src="./fabriccare.jpg" alt="Incense" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+        </div>
+    </section>
+
+   
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./logo.png" alt="AARAV" class="footer-logo-img">
+            </div>
+            <div class="footer-sections">
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone-alt"></i> +91-9044400058, 8874477000</p>
+                    <p><i class="fas fa-envelope"></i> abhainternationalinc@gmail.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Abha International Inc Fragrances & Flavours Pvt Ltd.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.hamburger').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.hamburger').classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
