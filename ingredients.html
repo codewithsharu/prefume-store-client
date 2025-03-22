@@ -296,12 +296,7 @@
     </style>
 </head>
 <body>
-    <!-- Banner -->
-    <div class="banner">
-        <img src="./banner1.png" alt="Fragrances Banner" class="banner-image">
-        <h1>Fragrances</h1>
-    </div>
-
+   
     <!-- Navigation Bar -->
     <nav class="navbar">
         <img style="height: 50px;" src="./logo.png" alt="Logo" class="logo">
@@ -320,20 +315,103 @@
             <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
         </div>
     </nav>
+ <!-- Banner -->
+    <!-- <div class="banner">
+        <img src="./banner1.png" alt="Fragrances Banner" class="banner-image">
+        <h1>Ingredients</h1>
+    </div> -->
 
     <!-- New Section -->
     <section class="signature-fragrances" style="text-align: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-        <h2 style="font-size: 2.5rem; color: #8B7355; margin-bottom: 20px;">Signature Fragrances</h2>
-        <p style="font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.6;">While vision reaches your brain, fragrance touches the heart. Fragrance provides a strong emotional relationship between your product and your consumer. Signature fragrances, when achieved correctly, are the emotional identities that build lasting bonds. Our perfumers understand this craft. It is a confluence of science and art. Defining the personality of a product and pairing it with the desired fragrance is a process that we take pride in mastering.</p>
+        <h2 style="font-size: 2.5rem; color: #8B7355; margin-bottom: 20px;">Ingredients</h2>
+        <p style="font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.6;">The universe of scent and flavour is built upon a palette of thousands of active olfactory compounds. At Abha  Ingredients, we combine creative chemistry with expertise in the fragrance and flavour domain to supply high impact molecules. An achievement based on our ability to work with state-of-the-art technology, solid in-house capacity for research & development.</p>
         
-       
     </section>
+
+    <!-- Ingredients List Section -->
+    <section class="ingredients-list" style="padding: 40px 20px; margin: 40px auto; max-width: 1200px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th scope="col">Product</th>
+                                    <th scope="col">CAS#</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ingredientsTableBody">
+                                <!-- Table rows will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sample ingredients data - Replace with your actual data source
+        const ingredients = [
+            { product: "Acetophenone", cas: "98-86-2" },
+            { product: "Benzaldehyde", cas: "100-52-7" },
+            { product: "Benzyl acetate", cas: "140-11-4" },
+            { product: "Benzyl alcohol", cas: "100-51-6" },
+            { product: "Benzyl benzoate", cas: "120-51-4" },
+            { product: "Benzyl salicylate", cas: "118-58-1" },
+           
+        ];
+
+        // Function to populate the table
+        function populateIngredientsTable() {
+            const tableBody = document.getElementById('ingredientsTableBody');
+            
+            ingredients.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.product}</td>
+                    <td>${item.cas}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Call the function when the document is loaded
+        document.addEventListener('DOMContentLoaded', populateIngredientsTable);
+    </script>
+
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .ingredients-list {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .table th {
+            color: #8B7355;
+            font-weight: 600;
+            border-bottom: 2px solid #8B7355;
+        }
+        
+        .table td {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .table tr:hover {
+            background-color: #f9f6f0;
+        }
+    </style>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="./logo.png" alt="AARAV" class="footer-logo-img">
+                <img style="height: 50px;" src="./logo.png" alt="Abha International Inc" class="footer-logo-img">
             </div>
             <div class="footer-sections">
                 <div class="footer-contact">
