@@ -1,0 +1,54 @@
+/* Update font styles for better UI */
+body {
+    font-family: 'Arial', sans-serif; /* Change to a more modern font */
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Set a darker text color for better contrast */
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif; /* Use a serif font for headings */
+    color: #2c3e50; /* Consistent heading color */
+}
+
+.elegant-heading {
+    font-family: 'Playfair Display', serif; /* Keep this for elegance */
+    font-size: 3rem; /* Adjust size for better visibility */
+}
+
+.about-us h2 {
+    font-family: 'Montserrat', sans-serif; /* Use a sans-serif font for a modern look */
+    font-size: 2.5rem; /* Adjust size for better visibility */
+}
+
+.values-title {
+    font-family: 'Montserrat', sans-serif; /* Use a sans-serif font for consistency */
+    font-size: 2.5rem; /* Adjust size for better visibility */
+}
+
+.product-card h3 {
+    font-family: 'Montserrat', sans-serif; /* Use a sans-serif font for product titles */
+    font-size: 1.5rem; /* Adjust size for better visibility */
+}
+
+.product-card p {
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font for product descriptions */
+}
+
+/* Update button styles for better UI */
+.about-btn, .read-more-btn, .product-link {
+    font-family: 'Montserrat', sans-serif; /* Use a consistent font for buttons */
+    font-weight: bold; /* Make button text stand out */
+}
+
+/* Add hover effects for buttons */
+.about-btn:hover, .read-more-btn:hover, .product-link:hover {
+    background-color: #DAA520; /* Change background on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Update paragraph styles for better readability */
+p {
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font for paragraphs */
+    font-size: 1rem; /* Adjust size for better readability */
+    margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}

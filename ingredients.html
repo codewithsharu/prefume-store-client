@@ -262,37 +262,6 @@
             }
         }
 
-        /* Banner styles */
-        .banner {
-            height: 400px; /* Height for better visibility */
-            width: 100%;
-            background-color: #DAA520; /* Gold color for luxury feel */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3rem; /* Font size for better readability */
-            text-align: center;
-            position: relative; /* To position the image */
-            padding: 20px; /* Padding for better spacing */
-            margin-top: 120px; /* Added margin to start below the navbar */
-        }
-
-        .banner-image {
-            position: absolute; /* Position the image absolutely */
-            top: 0;
-            left: 0;
-            width: 100%; /* Make the image cover the banner */
-            height: 100%; /* Make the image cover the banner */
-            object-fit: cover; /* Ensure the image covers the area without distortion */
-            opacity: 0.6; /* Adjust opacity for a subtle background effect */
-        }
-
-        .banner h1 {
-            position: relative; /* Position the text above the image */
-            z-index: 1; /* Ensure the text is above the image */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for better contrast */
-        }
     </style>
 </head>
 <body>
@@ -320,13 +289,78 @@
         <img src="./banner1.png" alt="Fragrances Banner" class="banner-image">
         <h1>Ingredients</h1>
     </div> -->
-
-    <!-- New Section -->
-    <section class="signature-fragrances" style="text-align: center; padding: 40px 20px; background-color: #f9f6f0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-        <h2 style="font-size: 2.5rem; color: #8B7355; margin-bottom: 20px;">Ingredients</h2>
-        <p style="font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.6;">The universe of scent and flavour is built upon a palette of thousands of active olfactory compounds. At Abha  Ingredients, we combine creative chemistry with expertise in the fragrance and flavour domain to supply high impact molecules. An achievement based on our ability to work with state-of-the-art technology, solid in-house capacity for research & development.</p>
-        
+    <section class="signature-fragrances">
+        <h2>Ingredients</h2>
+        <p>The universe of scent and flavour is built upon a palette of thousands of active olfactory compounds. At Abha Ingredients, we combine creative chemistry with expertise in the fragrance and flavour domain to supply high impact molecules. An achievement based on our ability to work with state-of-the-art technology, solid in-house capacity for research & development.</p>
     </section>
+    <style>
+        /* Signature Fragrances Section */
+        .signature-fragrances {
+            background: linear-gradient(135deg, #ffffff, #f8f3e9); /* Subtle gradient background */
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(139, 115, 85, 0.15), 
+                       inset 0 -2px 10px rgba(218, 165, 32, 0.1);
+            padding: 80px 60px;
+            margin: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(218, 165, 32, 0.1);
+        }
+
+        .signature-fragrances::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(218, 165, 32, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .signature-fragrances:hover {
+            transform: translateY(-8px) scale(1.01);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 30px 60px rgba(139, 115, 85, 0.2),
+                       inset 0 -2px 15px rgba(218, 165, 32, 0.15);
+        }
+
+        .signature-fragrances h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8B7355, #DAA520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .signature-fragrances h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #DAA520, transparent);
+        }
+
+        .signature-fragrances p {
+            font-size: 1.25rem;
+            color: #5a4c3c;
+            line-height: 2;
+            max-width: 900px;
+            margin: 25px auto;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            opacity: 0.9;
+        }
+    </style>
 
     <!-- Ingredients List Section -->
     <section class="ingredients-list" style="padding: 40px 20px; margin: 40px auto; max-width: 1200px;">
@@ -386,28 +420,135 @@
 
     <style>
         .ingredients-list {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.9));
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(218, 165, 32, 0.15);
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+            margin: 6rem auto;
+            max-width: 1400px;
         }
-        
+
+        .ingredients-list::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('./luxury-pattern.png') repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .table {
+            position: relative;
+            border-collapse: separate;
+            border-spacing: 0 20px;
+            margin: 2rem 0;
+            width: 100%;
+            z-index: 1;
+        }
+
         .table th {
-            color: #8B7355;
-            font-weight: 600;
-            border-bottom: 2px solid #8B7355;
+            color: #4a4a4a;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 2.5rem 2rem;
+            border: none;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        .table th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.5), transparent);
         }
         
         .table td {
             color: #555;
-            font-size: 0.95rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: 2rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            transition: all 0.4s ease;
+            position: relative;
+            border-radius: 8px;
         }
-        
-        .table tr:hover {
-            background-color: #f9f6f0;
+
+        .table tr {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .table tbody tr {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .table tbody tr:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.95),
+                rgba(240, 240, 240, 0.95)
+            );
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.1),
+                0 2px 10px rgba(218, 165, 32, 0.1);
+        }
+
+        .table tr:hover td {
+            color: #DAA520;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .table tr:hover td:first-child {
+            border-left: 4px solid #DAA520;
+            padding-left: calc(2rem - 4px);
+        }
+
+        .table tr:hover td:first-child::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(218, 165, 32, 0.2), transparent);
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .ingredients-list {
+                padding: 2rem 1rem;
+                border-radius: 20px;
+                margin: 4rem auto;
+            }
+
+            .table th {
+                font-size: 1.3rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .table td {
+                font-size: 1rem;
+                padding: 1.5rem 1rem;
+            }
         }
     </style>
-
-    <!-- Footer -->
+  
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
@@ -449,5 +590,7 @@
             });
         });
     </script>
+
+
 </body>
 </html>
