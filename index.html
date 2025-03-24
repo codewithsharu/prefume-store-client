@@ -633,16 +633,24 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-
         .video-overlay h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 3.5rem; /* Adjusted font size for a minimal yet elegant feel */
+            margin-bottom: 1rem; /* Reduced space below the heading for a cleaner look */
+            color: #FFD700; /* Gold color for elegance */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+            font-family: 'Cormorant Garamond', serif; /* Luxurious font style */
+            letter-spacing: 0.5px; /* Slightly reduced letter spacing for a streamlined appearance */
+            text-align: center; /* Centered text for better visual impact */
         }
 
         .video-overlay p {
-            font-size: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1.5rem; /* Adjusted font size for improved readability */
+            color: #f5e6d3; /* Soft cream color for contrast */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+            font-family: 'Cormorant Garamond', serif; /* Luxurious font style */
+            margin-top: 0.5rem; /* Space above the paragraph for a clean layout */
+            line-height: 1.4; /* Improved line height for better readability */
+            text-align: center; /* Centered text for a cohesive look */
         }
 
         /* Add a subtle gradient overlay */
@@ -1523,13 +1531,13 @@
     <!-- Main content -->
     <main>
         <!-- Banner Section -->
-        <section id="home" class="banner" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; width: 98%; margin: 120px auto 0 auto; padding-top: 120px; position: relative; overflow: hidden;">
-            <video id="bannerVideo" loop muted playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.2;">
+        <section id="home" class="banner" style="min-height: clamp(60vh, 80vh, 70vh); display: flex; align-items: center; justify-content: center; width: 95%; margin: clamp(60px, 8vw, 100px) auto 0 auto; padding-top: clamp(40px, 8vw, 100px); position: relative; overflow: hidden;">
+            <video id="bannerVideo" loop muted playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;">
                 <source src="./bannervideo.mp4" type="video/mp4">
             </video>
-            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 1;">
-                <h1 style="color: #fff; font-size: 4rem; text-align: center; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif;">Discover Pure Luxury</h1>
-                <p style="color: #fff; font-size: 2rem; text-align: center; margin-bottom: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif;">Artistry in Every Essence</p>
+            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 1;">
+                <h1 class="luxury-text" style="color: #fff; font-size: 3rem; text-align: center; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif;">Discover Pure Luxury</h1>
+                <p class="luxury-text" style="color: #fff; font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif;">Artistry in Every Essence</p>
             </div>
             <style>
                 #home.banner:hover #bannerVideo {
@@ -1550,27 +1558,50 @@
 
                 @media screen and (max-width: 768px) {
                     #home.banner {
-                        margin-top: 80px;
-                        padding-top: 60px;
+                        margin-top: 60px;
+                        padding-top: 40px;
                         min-height: 30vh;
-                        width: 70%;
+                        width: 90%;
                     }
                     .banner-overlay h1 {
-                        font-size: 2rem;
+                        font-size: 2.5rem;
                     }
                     .banner-overlay p:nth-of-type(1) {
                         font-size: 1.2rem;
                     }
                     .banner-overlay p:nth-of-type(2) {
                         font-size: 1rem;
-                        padding: 0 20px;
+                        padding: 0 15px;
                     }
                 }
                 @media screen and (max-width: 480px) {
                     #home.banner {
-                        width: 70%;
-                        margin: 60px auto 0 auto;
+                        width: 90%;
+                        margin: 50px auto 0 auto;
                         min-height: 20vh;
+                    }
+                    .banner-overlay h1 {
+                        font-size: 2rem;
+                    }
+                    .banner-overlay p {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                .luxury-text {
+                    opacity: 0;
+                    transform: translateY(20px);
+                    animation: fadeInUp 0.8s forwards;
+                }
+
+                @keyframes fadeInUp {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0);
                     }
                 }
             </style>
@@ -1627,9 +1658,9 @@
         <!-- About Us Section -->
         <div class="about-us">
             <h2 class="responsive-heading" style="font-size: clamp(2rem, 5vw, 3.5rem);">ABOUT <span class="highlight">US</span></h2>
-            <p>For over three decades, we have been dedicated to enriching the human experience through the art and science of taste and smell. Our deep understanding of these primal senses, refined through generations of expertise, allows us to create extraordinary sensory experiences.</p>
+            <p>We have been dedicated to enriching the human experience through the art and science of taste and smell. Our deep understanding of these primal senses, refined through generations of expertise, allows us to create extraordinary sensory experiences.</p>
                   <div class="about-cta">
-                <button class="about-btn">Learn More</button>
+                <button onclick="window.location.href='about.html'" class="about-btn">Learn More</button>
                
             </div>
         </div>
@@ -1639,7 +1670,7 @@
             <div class="fragrances-content">
                 <h2 style="color: #FFD700;">INDULGE IN LUXURY</h2>
                 <p style="color: #f5e6d3;">Discover our exquisite collection of refined fragrances, meticulously crafted to elevate your senses and transport you to a world of sophisticated elegance.</p>
-                <button class="read-more-btn" style="background: #FFD700; color: #2c3e50; border: none;">Experience Luxury</button>
+              
             </div>
         </section>
 
@@ -1675,29 +1706,29 @@
         <div class="gallery">
             <div class="img-container">
                 <img
-                    src="https://images.unsplash.com/photo-1690790427878-ecf29d8b686b?q=80&w=640"
-                    alt="No elegance is possible without perfume"
+                    src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="A luxurious fragrance experience"
                     data-original="1887"
                 />
             </div>
             <div class="img-container">
                 <img
-                    src="https://images.unsplash.com/photo-1696218614256-b74c0bcde0d5?q=80&w=640"
-                    alt="It is the unseen, unforgettable, ultimate accessory"
+                    src=""
+                    alt="The essence of elegance in a bottle"
                     data-original="1887"
                 />
             </div>
             <div class="img-container">
                 <img
-                    src="https://images.unsplash.com/photo-1696218359361-b088f32f86b8?q=80&w=640"
-                    alt="A perfume is like a piece of clothing, a message"
+                    src=""
+                    alt="Capturing the spirit of luxury"
                     data-original="1887"
                 />
             </div>
             <div class="img-container">
                 <img
-                    src="https://images.unsplash.com/photo-1690790591188-3503c1a4dcb6?q=80&w=640"
-                    alt="Perfume is like a parenthesis, a moment of freedom"
+                    src=""
+                    alt="A fragrance that tells a story"
                     data-original="1887"
                 />
             </div>
