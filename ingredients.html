@@ -290,8 +290,8 @@
 <center>        <h1 style="font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; position: relative; z-index: 2; margin: 0; background: linear-gradient(to right, #ffffff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: text-shimmer 3s infinite; text-shadow: none;">Ingredients</h1></center>
     </div>
     <section class="signature-fragrances">
-        <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem);">Ingredients</h2>
-        <p style="text-align: left; font-size: clamp(1rem, 3vw, 1.25rem);">The universe of scent and flavour is built upon a palette of thousands of active olfactory compounds. At Abha Ingredients, we combine creative chemistry with expertise in the fragrance and flavour domain to supply high impact molecules. An achievement based on our ability to work with state-of-the-art technology, solid in-house capacity for research & development.</p>
+        <h2 style="text-align: center;">Ingredients</h2>
+        <p style="text-align: left;">The universe of scent and flavour is built upon a palette of thousands of active olfactory compounds. At Abha Ingredients, we combine creative chemistry with expertise in the fragrance and flavour domain to supply high impact molecules. An achievement based on our ability to work with state-of-the-art technology, solid in-house capacity for research & development.</p>
     </section>
     <style>
         /* Signature Fragrances Section */
@@ -373,6 +373,7 @@
                                 <tr class="bg-light">
                                     <th scope="col">Product</th>
                                     <th scope="col">CAS#</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody id="ingredientsTableBody">
@@ -460,9 +461,17 @@
                 row.innerHTML = `
                     <td>${item.product}</td>
                     <td>${item.cas}</td>
+                    <td><button onclick="viewDetails('${item.product}')" class="btn btn-info">View Details</button></td>
                 `;
                 tableBody.appendChild(row);
             });
+        }
+
+        // Function to open Wikipedia page
+        function viewDetails(product) {
+            const query = product.replace(/\s+/g, '_'); // Replace spaces with underscores for URL
+            const url = `https://en.wikipedia.org/wiki/${query}`;
+            window.open(url, '_blank'); // Open in a new tab
         }
 
         // Call the function when the document is loaded
@@ -496,110 +505,101 @@
 
         .table {
             position: relative;
-            border-collapse: separate;
-            border-spacing: 0 20px;
-            margin: 2rem 0;
+            border-collapse: collapse;
             width: 100%;
-            z-index: 1;
+            margin: 2rem 0;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .table th {
-            color: #4a4a4a;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 2.5rem 2rem;
-            border: none;
-            position: relative;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-        }
-
-        .table th::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.5), transparent);
-        }
-        
-        .table td {
-            color: #555;
+            color: #000000;
+            font-family: 'Roboto', sans-serif;
             font-size: 1.2rem;
-            font-weight: 400;
-            padding: 2rem 2rem;
-            background: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 1rem;
             border: none;
-            transition: all 0.4s ease;
-            position: relative;
-            border-radius: 8px;
+            background: #f0f0f0;
         }
 
-        .table tr {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .table th:hover {
+            background: #e0e0e0;
+        }
+
+        .table td {
+            color: #333;
+            font-size: 1rem;
+            font-weight: 400;
+            padding: 1rem;
+            border: none;
             position: relative;
+            transition: background 0.3s;
         }
 
         .table tbody tr {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
+            background: #ffffff;
+            transition: transform 0.3s;
         }
 
         .table tbody tr:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.95),
-                rgba(240, 240, 240, 0.95)
-            );
-            box-shadow: 
-                0 10px 20px rgba(0, 0, 0, 0.1),
-                0 2px 10px rgba(218, 165, 32, 0.1);
+            transform: translateY(-2px);
+            background: #f9f9f9;
         }
 
-        .table tr:hover td {
-            color: #DAA520;
-            letter-spacing: 0.5px;
-            font-weight: 500;
+        .table tbody tr:nth-child(even) {
+            background: #f2f2f2;
         }
 
-        .table tr:hover td:first-child {
-            border-left: 4px solid #DAA520;
-            padding-left: calc(2rem - 4px);
-        }
-
-        .table tr:hover td:first-child::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, rgba(218, 165, 32, 0.2), transparent);
-            z-index: -1;
+        .table th, .table td {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
-            .ingredients-list {
-                padding: 2rem 1rem;
-                border-radius: 20px;
-                margin: 4rem auto;
+            .table th, .table td {
+                font-size: 0.9rem;
+                padding: 0.75rem;
             }
+        }
 
-            .table th {
-                font-size: 1.3rem;
-                padding: 1.5rem 1rem;
-            }
+        .table .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
 
-            .table td {
-                font-size: 1rem;
-                padding: 1.5rem 1rem;
-            }
+        .table .action-buttons button {
+            background: #4A90E2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .table .action-buttons button:hover {
+            background: #357ABD;
+        }
+
+        .table-search {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .table-search input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            transition: border 0.3s;
+        }
+
+        .table-search input:focus {
+            border-color: #4A90E2;
+            outline: none;
         }
     </style>
   
