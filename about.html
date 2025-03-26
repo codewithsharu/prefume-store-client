@@ -118,6 +118,9 @@
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
         }
 
         .about-header {
@@ -131,6 +134,7 @@
             margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
             text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
         }
 
         .about-header p {
@@ -139,6 +143,7 @@
             line-height: 1.8;
             max-width: 800px;
             margin: 0 auto;
+            font-style: italic;
         }
 
         .about-content {
@@ -165,6 +170,15 @@
             padding: 30px;
             background-color: #f9f9f9;
             border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .about-text h2 {
@@ -184,12 +198,17 @@
             text-align: center;
             padding: 80px 0;
             background: #f0f0f0;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .values-section h2 {
             color: #2c3e50;
             font-size: 2.5rem;
             margin-bottom: 40px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
         }
 
         .values-grid {
@@ -205,17 +224,25 @@
             background: #ffffff;
             padding: 40px;
             border-radius: 15px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .value-card:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .value-card i {
             color: #DAA520;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover i {
+            transform: rotate(10deg);
         }
 
         .value-card h3 {
@@ -376,6 +403,22 @@
             .social-icons {
                 justify-content: center;
             }
+
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-header p {
+                font-size: 1rem;
+            }
+
+            .value-card {
+                padding: 30px;
+            }
+
+            .value-card h3 {
+                font-size: 1.5rem;
+            }
         }
 
         .image-gallery {
@@ -383,13 +426,22 @@
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
         }
 
         .gallery-item {
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
@@ -397,14 +449,43 @@
             height: auto;
             display: block;
             transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
+            border-radius: 10px;
         }
 
         .gallery-item img:hover {
             transform: scale(1.1);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -457,31 +538,31 @@
         </div>
         <div class="factory-outlet">
             <div class="image-gallery">
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f1.jpg" alt="Factory Image 1">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f2.jpg" alt="Factory Image 2">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f3.jpg" alt="Factory Image 3">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f4.jpg" alt="Factory Image 4">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f5.jpg" alt="Factory Image 5">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f6.jpg" alt="Factory Image 6">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f7.jpg" alt="Factory Image 7">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f8.jpg" alt="Factory Image 8">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openModal(this)">
                     <img src="./f1.jpg" alt="Factory Image 9">
                 </div>
             </div>
@@ -535,7 +616,25 @@
         </div>
     </footer>
 
+    <!-- Modal for full-size image -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <script>
+        function openModal(element) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImage.src = element.querySelector("img").src;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.hamburger').addEventListener('click', function() {
                 this.classList.toggle('active');
