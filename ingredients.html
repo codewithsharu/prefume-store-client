@@ -536,63 +536,32 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .table th {
-            color: #000000;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-transform: uppercase;
+        .table th, .table td {
             padding: 1rem;
             border: none;
+            text-align: center;
+        }
+
+        .table thead {
             background: #f0f0f0;
         }
 
-        .table th:hover {
-            background: #e0e0e0;
-        }
-
-        .table td {
-            color: #333;
-            font-size: 1rem;
-            font-weight: 400;
-            padding: 1rem;
-            border: none;
-            position: relative;
-            transition: background 0.3s;
-        }
-
-        .table tbody tr {
-            background: #ffffff;
-            transition: transform 0.3s;
-        }
-
-        .table tbody tr:hover {
-            transform: translateY(-2px);
+        .table tbody tr:nth-child(even) {
             background: #f9f9f9;
         }
 
-        .table tbody tr:nth-child(even) {
-            background: #f2f2f2;
-        }
-
-        .table th, .table td {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .table th, .table td {
-                font-size: 0.9rem;
-                padding: 0.75rem;
-            }
+        .table tbody tr:hover {
+            background: #e0e0e0;
         }
 
         .table .action-buttons {
             display: flex;
+            justify-content: center;
             gap: 0.5rem;
         }
 
         .table .action-buttons button {
-            background: #fdfdfd;
+            background: #DAA520;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -602,7 +571,14 @@
         }
 
         .table .action-buttons button:hover {
-            background: #357ABD;
+            background: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .table th, .table td {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+            }
         }
 
         .table-search {
