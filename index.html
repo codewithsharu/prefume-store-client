@@ -5,6 +5,7 @@
     <title>Abha International Inc</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BricolageGrotesque:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <style>
@@ -71,7 +72,8 @@
             align-items: center;
             padding: 1rem 5%;
             height: 80px;
-            border: 2px solid rgba(205, 175, 75, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
             transition: all 0.3s ease;
             margin-top: 1rem;
             border-radius: 10px;
@@ -1524,8 +1526,14 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; height: 80px; border: 2px solid rgba(205, 175, 75, 0.3); transition: all 0.3s ease; margin-top: 1rem; border-radius: 10px;">
+   
+
+    
+    
+    <!-- Main content -->
+    <main>
+         <!-- Navigation Bar -->
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; height: 80px;  transition: all 0.3s ease; margin-top: 1rem; border-radius: 10px;">
         <div class="logo-container">
             <img style="height: 50px; margin-right: 10px;" src="./frlogo.png" alt="Logo" class="logo">
         </div>
@@ -1546,17 +1554,12 @@
         </div>
         <!-- <img src="./navbarsticker.png" alt="Great Place to Work Certified" class="certification-sticker"> -->
     </nav>
-
-    <br>
-    
-    <!-- Main content -->
-    <main>
         <!-- Banner Section -->
-        <section id="home" class="banner"  style="min-height: clamp(100vh, 80vh, 100vh); background-color: white; display: flex; border-radius: 0; align-items: center; justify-content: center; width: 100%; margin: clamp(60px, 8vw, 100px) auto 0 auto; padding: clamp(20px, 5vw, 40px); position: relative; overflow: hidden; ">
+        <section id="home" class="banner" style="min-height: clamp(100vh, 80vh, 100vh); background-color: white; display: flex; border-radius: 0; align-items: center; justify-content: center; width: 100%; margin: 0 auto 0 auto; padding: clamp(20px, 5vw, 40px); position: relative; overflow: hidden; margin-top: -7.5rem;">
             <img id="bannerImage" src="./home1.jpg" alt="Banner Image" style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;">
-            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; opacity: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(10px, 3vw, 20px);">
-                <h1 class="luxury-text split-text" style="color: #ffffff; font-size: clamp(2.5rem, 6vw, 3.5rem); text-align: left; margin: 0; text-shadow: 4px 4px 8px rgba(0,0,0,0.8); font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: bold;">Discover <span class="split">Pure Luxury</span></h1>
-                <p class="luxury-text split-text" style="color: #ffffff; font-size: clamp(1rem, 5vw, 1.8rem); text-align: left; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-family: 'Cinzel', serif; letter-spacing: 1px; font-weight: 300;">Artistry <span class="split">in Every Essence</span></p>
+            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; opacity: 1;  box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(10px, 3vw, 20px);">
+                <h1 class="split-text" style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(3rem, 6vw, 7rem); text-align: left; margin: 0; margin-top: clamp(8rem, 9vw, 9rem); font-family: 'Helvetica Neue', sans-serif; letter-spacing: 1px; font-weight: 600;">Fragrances <span class="split"> & </span></h1>
+                <h1 class="split-text" style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(3rem, 6vw, 7rem); text-align: left; margin: 0; font-family: 'Helvetica Neue', sans-serif; letter-spacing: 1px; font-weight: 600;">Flavours</h1>
             </div>
             <style>
                 #home.banner:hover #bannerVideo {
@@ -1571,11 +1574,9 @@
                     perspective: 1000px;
                 }
 
-          
-
                 @media screen and (max-width: 768px) {
                     #home.banner {
-                        margin-top: 60px;
+                        margin-top: 0; /* Ensure no margin on smaller screens */
                         padding-top: 40px;
                         min-height: 30vh;
                         width: 90%;
@@ -1594,7 +1595,7 @@
                 @media screen and (max-width: 480px) {
                     #home.banner {
                         width: 90%;
-                        margin: 50px auto 0 auto;
+                        margin: 0 auto; /* Ensure no margin on smaller screens */
                         min-height: 20vh;
                     }
                     .banner-overlay h1 {
