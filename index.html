@@ -1776,30 +1776,30 @@
                 });
             });
 
-            // Intersection Observer for fade-in animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        // For elements with children that need to fade in
-                        entry.target.querySelectorAll('h2, p, button, a').forEach(child => {
-                            child.classList.add('fade-in');
-                        });
-                    }
-                });
-            }, { threshold: 0.1 });
+            // // Intersection Observer for fade-in animations
+            // const observer = new IntersectionObserver((entries) => {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting) {
+            //             entry.target.classList.add('fade-in');
+            //             // For elements with children that need to fade in
+            //             entry.target.querySelectorAll('h2, p, button, a').forEach(child => {
+            //                 child.classList.add('fade-in');
+            //             });
+            //         }
+            //     });
+            // }, { threshold: 0.1 });
 
-            // Observe all sections and elements that need fade-in
-            const elements = document.querySelectorAll('.banner, .company-description, .about-us, .fragrances-section, .small-banner, .production-facility');
-            elements.forEach(element => observer.observe(element));
+            // // Observe all sections and elements that need fade-in
+            // const elements = document.querySelectorAll('.banner, .company-description, .about-us, .fragrances-section, .small-banner, .production-facility');
+            // elements.forEach(element => observer.observe(element));
 
-            // Register GSAP ScrollTrigger
-            gsap.registerPlugin(ScrollTrigger);
+            // // Register GSAP ScrollTrigger
+            // gsap.registerPlugin(ScrollTrigger);
 
             // Select all relevant elements for scroll animations
-            const allElements = document.querySelectorAll('div, h2, h3, p, button, a');
+            // const allElements = document.querySelectorAll('div, h2, h3, p, button, a');
 
-            // // Apply fade-up animation to each element
+            // Apply fade-up animation to each element
             // allElements.forEach((element) => {
             //     gsap.from(element, {
             //         opacity: 0,
@@ -1816,7 +1816,7 @@
             //     });
             // });
 
-            // // // Parallax effect for backgrounds
+            // Parallax effect for backgrounds
             // gsap.to('.fragrances-section', {
             //     backgroundPosition: '50% 100%',
             //     ease: "none",
@@ -1827,7 +1827,8 @@
             //         scrub: true
             //     }
             // });
-        });
+
+
     </script>
 
 </body>
