@@ -10,69 +10,28 @@
             margin: 0;
             padding: 0;
         }
-        .scroll-block {
-            height: 200px;
-            margin: 20px;
-            background-color: lightgray;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            border: 1px solid #ccc;
-        }
-        #scrollPercentageDisplay {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-        }
+      
     </style>
 </head>
 <body>
-
-    <div id="scrollPercentageDisplay">Scroll Percentage: 0%</div>
-    <div class="scroll-block" id="scrollBlock1"></div>
-    <div class="scroll-block" id="scrollBlock2"></div>
-    <div class="scroll-block" id="scrollBlock3"></div>
-    <div class="scroll-block" id="scrollBlock4"></div>
-    <div class="scroll-block" id="scrollBlock5"></div>
-    <div class="scroll-block" id="scrollBlock6"></div>
+    <div id="scrollPercentageDisplay" style="position: fixed; top: 10px; right: 10px; background-color: white; padding: 10px; border: 1px solid #ccc;">Scroll Percentage: 0%</div>
+    <div  style="height: 200px; margin: 20px; background-color: lightgray; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #ccc;"></div>
+    <div  style="height: 200px; margin: 20px; background-color: lightgray; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #ccc;"></div>
+    <div  style="height: 200px; margin: 20px; background-color: lightgray; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #ccc;"></div>
+    <div  style="height: 200px; margin: 20px; background-color: lightgray; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #ccc;"></div>
+    <div  style="height: 200px; margin: 20px; background-color: lightgray; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #ccc;"></div>
+    <div  style="height: 200px; margin: 20px; background-color: lightgray; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #ccc;"></div>
 
     <script>
-        const scrollBlocks = document.querySelectorAll('.scroll-block');
-        const scrollPercentageDisplay = document.getElementById('scrollPercentageDisplay');
-
-        function fillScrollBlock(scrollBlock, index) {
-            scrollBlock.textContent = `Block ${index + 1} is visible!`;
-        }
-
-        function checkScrollBlockVisibility() {
-            scrollBlocks.forEach((scrollBlock, index) => {
-                const rect = scrollBlock.getBoundingClientRect();
-                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    fillScrollBlock(scrollBlock, index);
-                }
-            });
-        }
-
-        function updateScrollPercentage() {
+        window.addEventListener('scroll', function() {
+            // Calculate the scroll percentage
             const scrollTop = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            const totalScrollableHeight = documentHeight - windowHeight;
-            const scrollPercentage = (scrollTop / totalScrollableHeight) * 100;
-
-            scrollPercentageDisplay.textContent = `Scroll Percentage: ${Math.round(scrollPercentage)}%`;
-        }
-
-        window.addEventListener('scroll', () => {
-            checkScrollBlockVisibility();
-            updateScrollPercentage();
+            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (scrollTop / documentHeight) * 100;
+            console.log(scrollPercentage);
+            // Update the display
+            document.getElementById('scrollPercentageDisplay').innerText = 'Scroll Percentage: ' + Math.round(scrollPercentage) + '%';
         });
-        window.addEventListener('resize', checkScrollBlockVisibility);
     </script>
 
 </body>
