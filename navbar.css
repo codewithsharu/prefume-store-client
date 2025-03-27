@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.navbar {
+    width: 55%;
+    max-width: 1200px;
+    background: linear-gradient(to right, #000000,#0f021a);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border: 0.5px solid #6f6774;
+    margin: 0 10px; /* Added margin for left and right space */
+  
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo span {
+    font-size: 20px;
+    font-weight: bold;
+    color: white; /* Changed to white for better visibility */
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px; /* Adjusted gap for no extra space */
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    color: #AA40FA;
+   
+}
+
+.navbar-button {
+    padding: 10px 20px;
+    background-color: #AA40FA;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* Changed to white for better visibility */
+}
+@media screen and (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        align-items: center;
+    }
+    .navbar-menu {
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: -200px; /* Start from above the viewport */
+        left: 10px;
+        right: 10px;
+        background-color: black;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        border: 0.5px solid #6f6774;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        pointer-events: none;
+    }
+
+    .navbar-menu.active {
+        top: calc(100% + 10px); /* Final position */
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .navbar-button {
+        display: none; /* Hide the button in mobile view */
+    }
+}
+
+.navbar-logo span {
+    font-size: 1.5rem;
+    font-family: 'Work Sans', sans-serif;
+ 
+    color: white;
+}
+
+

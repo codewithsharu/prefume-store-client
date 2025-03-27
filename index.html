@@ -45,16 +45,7 @@
         }
 
         /* Update navbar styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-          
-        }
-
+      
         @media screen and (max-width: 768px) {
             .banner {
                 padding-top: 80px;
@@ -70,17 +61,20 @@
         .navbar {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 50%; /* Center the navbar */
+            transform: translateX(-50%); /* Adjust for centering */
+            width: 92%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.85);
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Center items within the navbar */
             align-items: center;
             padding: 1rem 5%;
-            height: 120px;
-            border-bottom: 2px solid rgba(205, 175, 75, 0.3);
+            height: 80px;
+            border: 2px solid rgba(205, 175, 75, 0.3);
             transition: all 0.3s ease;
+            margin-top: 1rem;
+            border-radius: 10px;
         }
 
      
@@ -202,7 +196,7 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: -120%;
                 height: 100vh;
                 width: 100%;
                 background-color: white;
@@ -1161,7 +1155,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #ffffff, #FFF8DC);
+            /* background: linear-gradient(135deg, #ffffff, #FFF8DC); */
         }
 
         main {
@@ -1531,10 +1525,11 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div style="display: flex; align-items: center;">
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; height: 80px; border: 2px solid rgba(205, 175, 75, 0.3); transition: all 0.3s ease; margin-top: 1rem; border-radius: 10px;">
+        <div class="logo-container">
             <img style="height: 50px; margin-right: 10px;" src="./frlogo.png" alt="Logo" class="logo">
-    </div>
+        </div>
+        
         <div class="hamburger">
             <span></span>
             <span></span>
@@ -1557,13 +1552,11 @@
     <!-- Main content -->
     <main>
         <!-- Banner Section -->
-        <section id="home" class="banner" style="min-height: clamp(60vh, 80vh, 80vh); display: flex; border-radius: 25px; align-items: center; justify-content: center; width: 95%; margin: clamp(60px, 8vw, 100px) auto 0 auto; padding: clamp(20px, 5vw, 40px); position: relative; overflow: hidden;">
-            <video id="bannerVideo" loop muted playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;">
-                <source src="./bannervideo.mp4" type="video/mp4">
-            </video>
-            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 1; border: 2px solid gold; border-radius: 25px; box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(10px, 3vw, 20px);">
-                <h1 class="luxury-text split-text" style="color: #ffffff; font-size: clamp(2.5rem, 6vw, 3.5rem); text-align: center; margin: 0; text-shadow: 4px 4px 8px rgba(0,0,0,0.8); font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: bold;">Discover <span class="split">Pure Luxury</span></h1>
-                <p class="luxury-text split-text" style="color: #ffffff; font-size: clamp(1rem, 5vw, 1.8rem); text-align: center; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-family: 'Cinzel', serif; letter-spacing: 1px; font-weight: 300;">Artistry <span class="split">in Every Essence</span></p>
+        <section id="home" class="banner"  style="min-height: clamp(100vh, 80vh, 100vh); background-color: white; display: flex; border-radius: 0; align-items: center; justify-content: center; width: 100%; margin: clamp(60px, 8vw, 100px) auto 0 auto; padding: clamp(20px, 5vw, 40px); position: relative; overflow: hidden; ">
+            <img id="bannerImage" src="./home1.jpg" alt="Banner Image" style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;">
+            <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; opacity: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(10px, 3vw, 20px);">
+                <h1 class="luxury-text split-text" style="color: #ffffff; font-size: clamp(2.5rem, 6vw, 3.5rem); text-align: left; margin: 0; text-shadow: 4px 4px 8px rgba(0,0,0,0.8); font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: bold;">Discover <span class="split">Pure Luxury</span></h1>
+                <p class="luxury-text split-text" style="color: #ffffff; font-size: clamp(1rem, 5vw, 1.8rem); text-align: left; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-family: 'Cinzel', serif; letter-spacing: 1px; font-weight: 300;">Artistry <span class="split">in Every Essence</span></p>
             </div>
             <style>
                 #home.banner:hover #bannerVideo {
@@ -1578,9 +1571,7 @@
                     perspective: 1000px;
                 }
 
-                .banner-overlay {
-                    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7))!important;
-                }
+          
 
                 @media screen and (max-width: 768px) {
                     #home.banner {
@@ -1631,21 +1622,7 @@
                     }
                 }
             </style>
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const video = document.getElementById('bannerVideo');
-                    const banner = document.getElementById('home');
-                    
-                    banner.addEventListener('mouseenter', () => {
-                        video.play();
-                    });
-                    
-                    banner.addEventListener('mouseleave', () => {
-                        video.pause();
-                    });
-                });
-            </script>
-        </section>
+     </section>
 
         <!-- Rest of the sections -->
         <section class="company-description">
@@ -1828,19 +1805,6 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.querySelector('.navbar');
-            const banner = document.querySelector('.banner');
-
-            // Add hover event listeners to the banner
-            banner.addEventListener('mouseenter', function() {
-                navbar.classList.add('transparent');
-            });
-
-            banner.addEventListener('mouseleave', function() {
-                navbar.classList.remove('transparent');
-            });
-
             document.querySelector('.hamburger').addEventListener('click', function() {
                 this.classList.toggle('active');
                 document.querySelector('.nav-links').classList.toggle('active');
