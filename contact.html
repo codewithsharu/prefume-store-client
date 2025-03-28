@@ -4,6 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Abha International Inc</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("0takmXtMUGBzGN8SS"); // Use your actual public key here
+        })();
+    </script>
     <style>
         /* Reset and base styles */
         * {
@@ -429,22 +435,22 @@
             </div>
             <div class="contact-form">
                 <h2>Send Message</h2>
-                <form>
+                <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" required>
+                        <input type="text" id="subject" name="title" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" rows="5" required></textarea>
+                        <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-paper-plane"></i> Send Message
@@ -492,6 +498,20 @@
                     document.querySelector('.nav-links').classList.remove('active');
                     document.querySelector('.hamburger').classList.remove('active');
                 });
+            });
+
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                console.log("Form submitted"); // Debug log
+                console.log(this); // Log the form data
+
+                emailjs.sendForm('service_lwka2xb', 'template_b0oip9p', this)
+                    .then(function() {
+                        alert('Message sent successfully!');
+                    }, function(error) {
+                        console.error("Error sending message:", error); // Log the error
+                        alert('Failed to send message. Please try again later.');
+                    });
             });
         });
     </script>
