@@ -1,0 +1,544 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Abha International Inc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        (function(){
+            emailjs.init("0takmXtMUGBzGN8SS"); // Use your actual public key here
+        })();
+    </script>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            background-color: #f0f0f0; /* Light background for contrast */
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Original navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            height: 120px;
+            border-bottom: 2px solid rgba(205, 175, 75, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links {
+            margin-left: auto;
+        }
+
+        .navbar .contact-us {
+            margin-left: 20px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #8B7355; /* Original color for links */
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover {
+            color: #DAA520; /* Original hover color */
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #DAA520;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a.active {
+            color: #DAA520;
+            font-weight: 700;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Original footer styles */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            color: #fff;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 40px;
+        }
+
+        .footer-contact, .footer-social {
+            text-align: left;
+        }
+
+        .footer h4 {
+            color: #DAA520; /* Original footer heading color */
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .footer-contact p {
+            color: #fff; /* Original footer text color */
+            margin: 10px 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #DAA520;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section Styles */
+        .contact-section {
+            margin-top: 150px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8edf5 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #DAA520; /* Gold border for contact info */
+        }
+
+        .contact-info h2 {
+            color: #4B3C2A; /* Darker text color */
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif; /* More elegant font */
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid #DAA520; /* Gold border for info items */
+        }
+
+        .contact-info .info-item:hover {
+            background: #f8f9fa;
+            transform: translateX(10px);
+        }
+
+        .info-item i {
+            font-size: 24px;
+            color: #DAA520;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(218, 165, 32, 0.1);
+            border-radius: 50%;
+        }
+
+        .contact-form {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #DAA520; /* Gold border for contact form */
+        }
+
+        .contact-form h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #DAA520;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: #DAA520; /* Gold button */
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid #4B3C2A; /* Dark border for button */
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #c69500; /* Slightly darker gold on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Media queries */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .navbar {
+                height: 80px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 3%;
+            }
+
+            .footer-sections {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .footer-contact, .footer-social {
+                text-align: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <img style="height: 50px;" src="./logo.png" alt="Logo" class="logo">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="fragrances.html" ><i class="fas fa-box"></i> Fragrances</a>
+            <a href="flavours.html"><i class="fas fa-box"></i> Flavours</a>
+            <a href="ingredients.html"><i class="fas fa-box"></i> Ingredients</a>
+            <a href="rfq.html"><i class="fas fa-file-contract"></i> RFQ</a>
+            <a href="contact.html" class="active" ><i class="fas fa-envelope"></i> Contact Us</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>Corporate Off. : 58, Govt. Industrial Estate, Kalpi Road, Kanpur - 208012</p>
+                        <p>Works : Bhimsane, Bhauti, Kanpur Nagar</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>Contact No. : +91-9044400058, 8874477000</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>abhainternationalinc@gmail.com</p>
+                        <p>sales@abhainternationalinc.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Working Hours</h3>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h2>Send Message</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img style="height: 50px;" src="./logo.png" alt="Abha International Inc" class="footer-logo-img">
+             </div>
+            <div class="footer-sections">
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone-alt"></i> +91-9044400058, 8874477000</p>
+                    <p><i class="fas fa-envelope"></i> abhainternationalinc@gmail.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Abha International Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.hamburger').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.hamburger').classList.remove('active');
+                });
+            });
+
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Disable the submit button to prevent double clicks
+                const submitButton = document.querySelector('.submit-btn');
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending...'; // Change button text to indicate loading
+
+                emailjs.sendForm('service_lwka2xb', 'template_b0oip9p', this)
+                    .then(function() {
+                        // Show success alert
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Message sent successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+
+                        // Clear the form
+                        document.getElementById('contact-form').reset();
+                    }, function(error) {
+                        console.error("Error sending message:", error); // Log the error
+                        // Show error alert
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to send message. Please try again later.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    })
+                    .finally(function() {
+                        // Re-enable the submit button and reset its text
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; // Reset button text
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
