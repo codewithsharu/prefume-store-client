@@ -1,115 +1,300 @@
-* {
+   /* Reset and base styles */
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-.navbar {
-    width: 55%;
-    max-width: 1200px;
-    background: linear-gradient(to right, #000000,#0f021a);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 10px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
     position: relative;
-    border: 0.5px solid #6f6774;
-    margin: 0 10px; /* Added margin for left and right space */
-  
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
 }
 
-.navbar-logo {
+body {
+    min-height: 100vh;
+}
+
+/* Remove main styles */
+main {
+    /* Remove this entirely */
+}
+
+/* Update section styles */
+section {
+    margin: 40px 0; /* Add vertical spacing between sections */
+    padding: 60px 5%; /* Consistent padding */
+    box-sizing: border-box;
+    border-radius: 10px; /* Rounded corners for sections */
+    background: rgba(255, 255, 255, 0.9); /* Light background for contrast */
+}
+
+/* Update navbar styles */
+
+@media screen and (max-width: 768px) {
+    .banner {
+        padding-top: 80px;
+    }
+    
+    section {
+        padding: 60px 3%;
+    }
+}
+
+
+/* Keep original navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 50%; /* Center the navbar */
+    transform: translateX(-50%); /* Adjust for centering */
+    width: 92%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.85);
     display: flex;
+    justify-content: center; /* Center items within the navbar */
     align-items: center;
+    padding: 1rem 5%;
+    height: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    border-radius: 10px;
 }
 
-.navbar-logo span {
-    font-size: 20px;
-    font-weight: bold;
-    color: white; /* Changed to white for better visibility */
+
+
+
+.logo {
+    height: 20px;
 }
 
-.navbar-menu {
+
+
+.nav-links {
     display: flex;
-    gap: 20px; /* Adjusted gap for no extra space */
+    gap: rem; /* Updated gap for spacing */
 }
 
-.navbar-menu a {
+.nav-links a {
     text-decoration: none;
-    font-size: 16px;
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: grey;
+    
+    font-size: 18px; /* Updated font size */
+    transition: color 0.3s, transform 0.3s;
+    position: relative;
+    text-transform: capitalize;
 }
 
-.navbar-menu a:hover {
-    color: #AA40FA;
-   
+.nav-links a:hover {
+    color: black;
+ 
 }
 
-.navbar-button {
-    padding: 10px 20px;
-    background-color: #AA40FA;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: black;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
+.nav-links a.active {
+    color: black;
+    font-weight: 700;
+}
+
+/* Hamburger menu styles */
 .hamburger {
     display: none;
-    font-size: 24px;
     cursor: pointer;
-    color: #fff; /* Changed to white for better visibility */
+    padding: 10px;
 }
-@media screen and (max-width: 768px) {
-    .navbar {
-        width: 100%;
-        align-items: center;
-    }
-    .navbar-menu {
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        position: absolute;
-        top: -200px; /* Start from above the viewport */
-        left: 10px;
-        right: 10px;
-        background-color: black;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        border-radius: 8px;
-        border: 0.5px solid #6f6774;
-        opacity: 0;
-        transition: all 0.3s ease-in-out;
-        pointer-events: none;
-    }
 
-    .navbar-menu.active {
-        top: calc(100% + 10px); /* Final position */
-        opacity: 1;
-        pointer-events: all;
-    }
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
 
+/* Banner styles */
+.banner.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add this to ensure proper scrolling */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+main {
+    margin-top: 0; /* Adjusted to remove the space above the banner */
+    width: 100%;
+}
+
+/* Add styles for the certification sticker */
+Hamburger menu styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 1024px) {
     .hamburger {
         display: block;
+        z-index: 1001;
     }
 
-    .navbar-button {
-        display: none; /* Hide the button in mobile view */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -120%;
+        height: 100vh;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .certification-sticker {
+        display: none;  /* Hide the sticker on mobile */
+    }
+
+    .navbar {
+        height: 80px;
+    }
+
+    .logo {
+        height: 100px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
     }
 }
 
-.navbar-logo span {
-    font-size: 1.5rem;
-    font-family: 'Work Sans', sans-serif;
- 
-    color: white;
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 1rem 3%;
+    }
 }
 
 
+.nav-links a {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
+/* Enhanced Responsive Styles */
+@media screen and (max-width: 1200px) {
+    .company-description h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-us {
+        padding: 80px 40px;
+    }
+
+    .about-us h2 {
+        font-size: 2.8rem;
+    }
+
+    .fragrances-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar {
+        padding: 1rem 3%;
+    }
+
+    .production-facility {
+        padding: 60px 30px;
+    }
+
+    .production-facility h2 {
+        font-size: 2.8rem;
+    }
+
+    .values-container {
+        gap: 20px;
+    }
+
+    .value-item {
+        padding: 30px 20px;
+    }
+
+    .footer-sections {
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        height: 70px;
+    }
+
+    .logo {
+        height: 35px;
+    }
