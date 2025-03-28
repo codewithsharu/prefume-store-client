@@ -5,6 +5,8 @@
     <title>Contact Us - Abha International Inc</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         (function(){
             emailjs.init("0takmXtMUGBzGN8SS"); // Use your actual public key here
@@ -502,15 +504,38 @@
 
             document.getElementById('contact-form').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent default form submission
-                console.log("Form submitted"); // Debug log
-                console.log(this); // Log the form data
+
+                // Disable the submit button to prevent double clicks
+                const submitButton = document.querySelector('.submit-btn');
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending...'; // Change button text to indicate loading
 
                 emailjs.sendForm('service_lwka2xb', 'template_b0oip9p', this)
                     .then(function() {
-                        alert('Message sent successfully!');
+                        // Show success alert
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Message sent successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+
+                        // Clear the form
+                        document.getElementById('contact-form').reset();
                     }, function(error) {
                         console.error("Error sending message:", error); // Log the error
-                        alert('Failed to send message. Please try again later.');
+                        // Show error alert
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to send message. Please try again later.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    })
+                    .finally(function() {
+                        // Re-enable the submit button and reset its text
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; // Reset button text
                     });
             });
         });
