@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=BricolageGrotesque:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <style>
@@ -1556,17 +1559,33 @@
     </nav>
         <!-- Banner Section -->
         <section id="home" class="banner" style="min-height: clamp(100vh, 80vh, 100vh); background-color: white; display: flex; border-radius: 0; align-items: center; justify-content: center; width: 100%; margin: 0 auto 0 auto; padding: clamp(20px, 5vw, 40px); position: relative; overflow: hidden; margin-top: -7.5rem;">
-            <img id="bannerImage" src="./home1.jpg" alt="Banner Image" style="position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;">
+            <img id="bannerImage" src="./home1.jpg" alt="Banner Image" style="position: absolute; width: 100%; height: 100vh; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;">
             <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; opacity: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(10px, 3vw, 20px);">
-                <h1 class="split-text" style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(4rem, 8vw, 9rem); text-align: left; margin: 0; margin-top: clamp(8rem, 9vw, 9rem); font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 1px; font-weight: 700;">Taste <span class="split">Theee</span></h1>
-                <h1 class="split-text" style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(4rem, 8vw, 9rem); text-align: left; margin: 0;  font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 1px; font-weight: 700;">Flavours</span></h1>
+                <h1 class="split-text hero" style="  color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(4rem, 8vw, 9rem); text-align: left; margin: 0; margin-top: clamp(8rem, 9vw, 9rem);  letter-spacing: 1px; font-weight: 700;">Scent <span class="split">that</span></h1>
+                
+                
+                
+                <h1 class="split-text" style=" margin-top: clamp(-3rem,3vh,-3rem);  color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(4rem, 8vw, 9rem); text-align: left; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 1px; font-weight: 700;">Speaks</span></h1>
+          
+                <div style="position: absolute; bottom: 8%;">
+                    
+                 <p style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Transform Your Products</p>
+                 <p style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Craft Extraordinary Experiences</p>
+                 <button class="explore" style="color: white;  padding: 10px 20px; border-radius: 25px; border: none; cursor: pointer; margin-top: 1rem; margin-left: clamp(1rem, 1vh, 3rem); transition: background-color 0.3s, transform 0.3s;" onclick="window.location.href='flavours.html';">
+                     Explore Flavours <i class="fas fa-arrow-right" style="transform: rotate(325deg);"></i> <!-- Rotated arrow icon -->
                
-                <p style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Transform Your Products</p>
-                <p style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Craft Extraordinary Experiences</p>
-                <button class="explore" style="color: white;  padding: 10px 20px; border-radius: 25px; border: none; cursor: pointer; margin-top: 1rem; margin-left: clamp(1rem, 1vh, 3rem); transition: background-color 0.3s, transform 0.3s;" onclick="window.location.href='flavours.html';">
-                    Explore Flavours <i class="fas fa-arrow-right" style="transform: rotate(325deg);"></i> <!-- Rotated arrow icon -->
-                </button>
+                 </button>
+          
+                </div>
+
+                
+            </div>
                 <style>
+
+                                
+                                         
+              
+
                     .explore {
                         background-color: #E5590F;
                         color: white;
@@ -1635,12 +1654,7 @@
             </div>
         </section>
 
-        <!-- Production Facility Section -->
-        <!-- <div class="production-facility" style="background: none !important; border-radius: 20px; box-shadow: none; padding: 80px 60px; margin: 40px auto;">
-            <h2 style="color: #2c3e50 !important; font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; text-shadow: none;">ARTISANAL <span class="highlight" style="color: #ffffff; font-weight: 300;">EXCELLENCE</span></h2>
-            <p style="color: #ffffff; font-family: 'Montserrat', sans-serif; line-height: 2; font-size: 1.2rem; text-shadow: none;">Within our distinguished ISO 9001:2015 & 22000:2005 certified sanctuary in Wada, we orchestrate the creation of the world's most refined fragrances. Our state-of-the-art facility, a harmonious blend of innovative technology and timeless craftsmanship, stands as a testament to perfection. Here, our master artisans, wielding both traditional wisdom and cutting-edge expertise, craft extraordinary olfactory masterpieces that define luxury.</p>
-            <p style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-top: 30px;"><a href="#contact" class="contact-link" style="color: #FFD700; text-decoration: none; border-bottom: 2px solid #FFD700; padding-bottom: 5px; transition: all 0.3s ease;">Begin Your Extraordinary Journey</a> into the realm of unparalleled fragrance mastery.</p>
-        </div> -->
+   
 
         <div class="values-section" style="margin-left: -1.1rem;">
             <h2 class="values-title">Our Guiding Principles</h2>
@@ -1775,59 +1789,6 @@
                     document.querySelector('.hamburger').classList.remove('active');
                 });
             });
-
-            // // Intersection Observer for fade-in animations
-            // const observer = new IntersectionObserver((entries) => {
-            //     entries.forEach(entry => {
-            //         if (entry.isIntersecting) {
-            //             entry.target.classList.add('fade-in');
-            //             // For elements with children that need to fade in
-            //             entry.target.querySelectorAll('h2, p, button, a').forEach(child => {
-            //                 child.classList.add('fade-in');
-            //             });
-            //         }
-            //     });
-            // }, { threshold: 0.1 });
-
-            // // Observe all sections and elements that need fade-in
-            // const elements = document.querySelectorAll('.banner, .company-description, .about-us, .fragrances-section, .small-banner, .production-facility');
-            // elements.forEach(element => observer.observe(element));
-
-            // // Register GSAP ScrollTrigger
-            // gsap.registerPlugin(ScrollTrigger);
-
-            // Select all relevant elements for scroll animations
-            // const allElements = document.querySelectorAll('div, h2, h3, p, button, a');
-
-            // Apply fade-up animation to each element
-            // allElements.forEach((element) => {
-            //     gsap.from(element, {
-            //         opacity: 0,
-            //         y: 30, // Move up from below
-            //         duration: 1,
-            //         ease: "power2.out",
-            //         scrollTrigger: {
-            //             trigger: element,
-            //             start: "top 80%", // Start animation when the top of the element is at 80% of the viewport
-            //             end: "top 20%",   // End animation when the top of the element is at 20% of the viewport
-            //             scrub: 1,        // Smooth scrubbing
-            //             toggleActions: "play none none reverse" // Play on enter, reverse on leave
-            //         }
-            //     });
-            // });
-
-            // Parallax effect for backgrounds
-            // gsap.to('.fragrances-section', {
-            //     backgroundPosition: '50% 100%',
-            //     ease: "none",
-            //     scrollTrigger: {
-            //         trigger: '.fragrances-section',
-            //         start: "top bottom",
-            //         end: "bottom top",
-            //         scrub: true
-            //     }
-            // });
-
 
     </script>
 
