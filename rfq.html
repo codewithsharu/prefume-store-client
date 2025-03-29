@@ -5,6 +5,14 @@
     <title>Request For Quotation - Abha International Inc</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="navbar.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        (function(){
+            emailjs.init("0eav9DU6Bfep46ceE");
+        })();
+    </script>
     <style>
         /* Reset and base styles */
         * {
@@ -276,30 +284,30 @@
             <p>Please fill out the form below and we'll get back to you with a quote as soon as possible.</p>
         </div>
         
-        <form class="rfq-form">
+        <form class="rfq-form" id="rfq-form">
             <div class="form-group">
                 <label><i class="fas fa-user form-icon"></i>Full Name</label>
-                <input type="text" required placeholder="Enter your full name">
+                <input type="text" name="full_name" required placeholder="Enter your full name">
             </div>
             
             <div class="form-group">
                 <label><i class="fas fa-building form-icon"></i>Company Name</label>
-                <input type="text" required placeholder="Enter your company name">
+                <input type="text" name="company_name" required placeholder="Enter your company name">
             </div>
             
             <div class="form-group">
                 <label><i class="fas fa-envelope form-icon"></i>Email Address</label>
-                <input type="email" required placeholder="Enter your email address">
+                <input type="email" name="email" required placeholder="Enter your email address">
             </div>
             
             <div class="form-group">
                 <label><i class="fas fa-phone form-icon"></i>Phone Number</label>
-                <input type="tel" required placeholder="Enter your phone number">
+                <input type="tel" name="phone" required placeholder="Enter your phone number">
             </div>
             
             <div class="form-group">
                 <label><i class="fas fa-box form-icon"></i>Product Category</label>
-                <select id="product-category" required onchange="updateSubcategories()">
+                <select name="product_category" id="product-category" required onchange="updateSubcategories()">
                     <option value="">Select a category</option>
                     <option value="fragrances">Fragrances</option>
                     <option value="flavours">Flavours</option>
@@ -307,19 +315,19 @@
             </div>
             <div class="form-group" id="subcategory-group" style="display: none;">
                 <label><i class="fas fa-box form-icon"></i>Subcategory</label>
-                <select id="subcategory" required>
+                <select name="subcategory" id="subcategory" required>
                     <!-- Subcategories will be populated here -->
                 </select>
             </div>
             
             <div class="form-group">
                 <label><i class="fas fa-list-alt form-icon"></i>Product Requirements</label>
-                <textarea rows="5" required placeholder="Please describe your product requirements in detail"></textarea>
+                <textarea name="requirements" rows="5" required placeholder="Please describe your product requirements in detail"></textarea>
             </div>
             
             <div class="form-group">
                 <label><i class="fas fa-truck form-icon"></i>Quantity Required</label>
-                <input type="number" required placeholder="Enter required quantity">
+                <input type="number" name="quantity" required placeholder="Enter required quantity">
             </div>
             
             <button type="submit" class="submit-btn">
@@ -367,6 +375,38 @@
                     document.querySelector('.hamburger').classList.remove('active');
                 });
             });
+
+            document.getElementById('rfq-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const submitButton = document.querySelector('.submit-btn');
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending...';
+
+                emailjs.sendForm('service_qvbploa', 'template_7odrvp6', this)
+                    .then(function() {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Request sent successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+
+                        document.getElementById('rfq-form').reset();
+                    }, function(error) {
+                        console.error("Error sending request:", error);
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to send request. Please try again later.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    })
+                    .finally(function() {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Request';
+                    });
+            });
         });
 
         function updateSubcategories() {
@@ -374,7 +414,6 @@
             const subcategorySelect = document.getElementById('subcategory');
             const subcategoryGroup = document.getElementById('subcategory-group');
 
-            // Clear previous subcategories
             subcategorySelect.innerHTML = '';
             subcategoryGroup.style.display = 'none';
 
