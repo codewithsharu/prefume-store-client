@@ -235,6 +235,7 @@ Hamburger menu styles */
 
 
 
+
 @media screen and (max-width: 768px) {
     .features-grid {
         grid-template-columns: 1fr;

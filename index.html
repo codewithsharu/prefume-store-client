@@ -1563,7 +1563,10 @@
                 <source src="./home1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            
+            <video id="bannerVideoMobile" autoplay loop muted style="position: absolute; width: 100%; height: 100vh; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;  display: none;">
+                <source src="./mob.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; opacity: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(15px, 3vw, 30px);">
                <div style="margin-top: clamp(3rem, 1vh, 3rem);">
                 <h1 class="split-text hero" style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(3rem, 8vw, 9rem); text-align: left; margin: 0; margin-top: clamp(10rem, 9vw, 9rem); letter-spacing: 1px; font-weight: 700; line-height: 0.7;">Abha  <span class="split">  </span></h1>
@@ -1797,6 +1800,25 @@
                 });
             });
 
+    </script>
+
+    <script>
+        // JavaScript to toggle video display based on screen size
+        function checkScreenSize() {
+            const bannerVideo = document.getElementById('bannerVideo');
+            const bannerVideoMobile = document.getElementById('bannerVideoMobile');
+            if (window.innerWidth <= 768) { // Adjust the width as needed
+                bannerVideo.style.display = 'none';
+                bannerVideoMobile.style.display = 'block';
+            } else {
+                bannerVideo.style.display = 'block';
+                bannerVideoMobile.style.display = 'none';
+            }
+        }
+
+        // Check screen size on load and resize
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
     </script>
 
 </body>
