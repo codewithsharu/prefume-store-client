@@ -379,6 +379,26 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        /* WhatsApp Button Styles */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            text-align: center;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
     </style>
 </head>
 <body>
@@ -432,7 +452,7 @@
             </div>
             <div class="founder" style="margin-bottom: 40px; padding: 25px; border: 2px solid #DAA520; border-radius: 10px; background-color: #f9f9f9; transition: transform 0.3s; text-align: left;">
                 <h3 style="font-family: 'Cinzel', serif; color: #333; font-size: 1.8rem; margin-bottom: 10px;">Shailja Gupta – Head of Research & Development</h3>
-                <p style="font-family: 'BricolageGrotesque', sans-serif; color: #555; font-size: 1.1rem; line-height: 1.6;">Shailja Gupta leads the Research & Development efforts at Abha International. Her extensive expertise and dedication to innovation drive the company’s growth, ensuring it remains a leader in a competitive landscape.</p>
+                <p style="font-family: 'BricolageGrotesque', sans-serif; color: #555; font-size: 1.1rem; line-height: 1.6;">Shailja Gupta leads the Research & Development efforts at Abha International. Her extensive expertise and dedication to innovation drive the company's growth, ensuring it remains a leader in a competitive landscape.</p>
             </div>
         </div>
         <div class="about-content">
@@ -521,6 +541,11 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/your_number" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         function openModal(element) {

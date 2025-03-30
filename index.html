@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <style>
+        
         /* Reset and base styles */
         * {
             margin: 0;
@@ -1526,6 +1527,26 @@
                 opacity: 1; /* Fade in */
             }
         }
+
+        /* WhatsApp Button Styles */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px; /* Positioning at the bottom right */
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            text-align: center;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
     </style>
 </head>
 <body>
@@ -1577,7 +1598,7 @@
                     
                  <p style="color: white; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Transform Your Products</p>
                  <p style="color: white; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Craft Extraordinary Experiences</p>
-                 <button class="explore" style="color: white;  padding: 10px 20px; border-radius: 25px; border: none; cursor: pointer; margin-top: 1rem; margin-left: clamp(1rem, 1vh, 3rem); transition: background-color 0.3s, transform 0.3s;" onclick="window.location.href='fragrances.html';">
+                 <button class="explore" style="color: white; background-color: #DAA520;  padding: 10px 20px; border-radius: 25px; border: none; cursor: pointer; margin-top: 1rem; margin-left: clamp(1rem, 1vh, 3rem); transition: background-color 0.3s, transform 0.3s;" onclick="window.location.href='fragrances.html';">
                      Explore Fragrances <i class="fas fa-arrow-right" style="transform: rotate(325deg);"></i> <!-- Rotated arrow icon -->
                
                  </button>
@@ -1585,29 +1606,6 @@
                 </div>
 
                 
-            </div>
-                <style>
-
-
-
-.banner-overlay{
-    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-}
-                                
-                                         
-              
-
-                    .explore {
-                        background-color: #DAA520;
-                        color: white;
-                        font-family: 'BricolageGrotesque', sans-serif;
-                        font-size: 1rem;
-                    }
-                    .explore:hover {
-                        background-color: black; /* Darker shade on hover */
-                        transform: scale(1.05); /* Slightly enlarge the button */
-                    }
-                </style>
             </div>
                
      </section>
@@ -1825,6 +1823,11 @@
         window.addEventListener('load', checkScreenSize);
         window.addEventListener('resize', checkScreenSize);
     </script>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/your_number" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
