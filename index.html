@@ -1538,7 +1538,7 @@
          <!-- Navigation Bar -->
     <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; height: 80px;  transition: all 0.3s ease; margin-top: 1rem; border-radius: 10px;">
         <div class="logo-container">
-            <img style="height: 50px; margin-right: 10px;" src="./frlogo.png" alt="Logo" class="logo">
+            <a href="index.html"><img style="height: 50px; margin-right: 10px;" src="./frlogo.png" alt="Logo" class="logo"></a>
         </div>
         
         <div class="hamburger">
@@ -1548,34 +1548,35 @@
         </div>
         <div class="nav-links">
             <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="fragrances.html"><i class="fas fa-box"></i> Fragrances</a>
             <a href="flavours.html"><i class="fas fa-box"></i> Flavours</a>
             <a href="ingredients.html"><i class="fas fa-box"></i> Ingredients</a>
             <a href="rfq.html"><i class="fas fa-file-contract"></i> RFQ</a>
             <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-            <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+           
         </div>
         <!-- <img src="./navbarsticker.png" alt="Great Place to Work Certified" class="certification-sticker"> -->
     </nav>
         <!-- Banner Section -->
         <section id="home" class="banner" style="background-color: #DEDEDE;  min-height: clamp(100vh, 80vh, 100vh); background-color: white; display: flex; border-radius: 0; align-items: center; justify-content: center; width: 100%; margin: 0 auto 0 auto; padding: clamp(20px, 5vw, 40px); position: relative; overflow: hidden; margin-top: -7.5rem;">
             <video id="bannerVideo" autoplay loop muted style="position: absolute; width: 100%; height: 100vh; object-fit: cover; transition: transform 0.3s ease; scale: 1.1; transform: scaleX(-1);">
-                <source src="./home1.mp4" type="video/mp4">
+                <source src="./bannervideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <video id="bannerVideoMobile" autoplay loop muted style="position: absolute; width: 100%; height: 100vh; object-fit: cover; transition: transform 0.3s ease; scale: 1.1;  display: none;">
-                <source src="./mob.mp4" type="video/mp4">
+                <source src="./bannervideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="banner-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; opacity: 1; box-shadow: 0 8px 40px rgba(0,0,0,0.9); padding: clamp(15px, 3vw, 30px);">
                <div style="margin-top: clamp(3rem, 1vh, 3rem);">
-                <h1 class="split-text hero" style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(3rem, 8vw, 9rem); text-align: left; margin: 0; margin-top: clamp(10rem, 9vw, 9rem); letter-spacing: 1px; font-weight: 700; line-height: 0.7; font-family: 'Smooth', sans-serif;">Abha  <span class="split">  </span></h1>
+                <h1 class="split-text hero luxury-text" style="padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(3rem, 8vw, 9rem); text-align: left; margin: 0; margin-top: clamp(10rem, 9vw, 9rem); letter-spacing: 1px; font-weight: 700; line-height: 0.7; font-family: 'Smooth', sans-serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">Abha  <span class="split">  </span></h1>
                 <br>
-                <h1 class="split-text" style="color: black; padding-left: clamp(1rem, 1vh, 4rem); font-size: clamp(3rem, 8vw, 9rem); text-align: left; font-family: 'Smooth', sans-serif; letter-spacing: 1px; font-weight: 700; line-height: 1.2;">International Inc</span></h1>
+                <h1 class="split-text luxury-text" style="color: black; padding-left: clamp(1rem, 1vh, 4rem); font-size: clamp(3rem, 8vw, 9rem); text-align: left; font-family: 'Smooth', sans-serif; letter-spacing: 1px; font-weight: 700; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">International Inc</span></h1>
                 <div style="position: absolute; bottom: 3%; ">
                     
-                 <p style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Transform Your Products</p>
-                 <p style="color: black; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Craft Extraordinary Experiences</p>
+                 <p style="color: white; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Transform Your Products</p>
+                 <p style="color: white; padding-left: clamp(1rem, 1vh, 3rem); font-size: clamp(1rem, 3vw, 2rem); text-align: left; margin: 0; font-family: 'BricolageGrotesque', sans-serif; letter-spacing: 0.5px;">Craft Extraordinary Experiences</p>
                  <button class="explore" style="color: white;  padding: 10px 20px; border-radius: 25px; border: none; cursor: pointer; margin-top: 1rem; margin-left: clamp(1rem, 1vh, 3rem); transition: background-color 0.3s, transform 0.3s;" onclick="window.location.href='fragrances.html';">
                      Explore Fragrances <i class="fas fa-arrow-right" style="transform: rotate(325deg);"></i> <!-- Rotated arrow icon -->
                
@@ -1587,6 +1588,11 @@
             </div>
                 <style>
 
+
+
+.banner-overlay{
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+}
                                 
                                          
               
@@ -1610,7 +1616,7 @@
         <section class="company-description">
             <div class="luxury-container">
                 <h2 class="elegant-heading">
-                    <span class="highlight luxury-text">Abha International Inc</span> <span class="typed-text"></span>
+                    <span class=" ">Abha International Inc</span> <span class="typed-text"></span>
                 </h2>
                 <div class="decorative-line"></div>
             </div>
@@ -1643,7 +1649,7 @@
         <!-- About Us Section -->
         <div class="about-us">
             <h2  class="responsive-heading " style="font-size: clamp(2rem, 5vw, 2rem); font-family: 'Cinzel', serif;">ABOUT <span class="highlight">US</span></h2>
-            <p>We have been dedicated to enriching the human experience through the art and science of taste and smell. Our deep understanding of these primal senses, refined through generations of expertise, allows us to create extraordinary sensory experiences.</p>
+            <p style="font-size: clamp(1rem,2vw,2rem);">We have been dedicated to enriching the human experience through the art and science of taste and smell. Our deep understanding of these primal senses, refined through generations of expertise, allows us to create extraordinary sensory experiences.</p>
                   <div class="about-cta">
                 <button onclick="window.location.href='about.html'" class="about-btn">Learn More</button>
                
@@ -1721,9 +1727,9 @@
             </div>
         </section>
 
-        <div class="video-section">
+        <div  class="video-section">
             <video class="full-width-video" autoplay muted loop>
-                <source src="productvid.mp4" type="video/mp4">
+                <source src="./productvid.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="video-overlay" >
