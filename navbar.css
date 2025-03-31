@@ -290,7 +290,12 @@ Hamburger menu styles */
         gap: 40px;
     }
 }
+    /* Custom scrollbar styles for WebKit browsers */
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
+    
 @media screen and (max-width: 768px) {
     .navbar {
         height: 70px;

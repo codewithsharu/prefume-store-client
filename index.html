@@ -44,10 +44,7 @@
             min-height: 100vh;
         }
 
-        /* Remove main styles */
-        main {
-            /* Remove this entirely */
-        }
+  
        
         /* Update section styles */
         section {
@@ -1201,15 +1198,6 @@
             }
         }
 
-        /* Add these styles to remove scrollbar but maintain scroll functionality */
-        html {
-            scrollbar-width: none; /* For Firefox */
-            -ms-overflow-style: none; /* For Internet Explorer and Edge */
-        }
-
-        html::-webkit-scrollbar {
-            display: none; /* For Chrome, Safari, and Opera */
-        }
 
         body {
             overflow-y: auto;
@@ -1556,13 +1544,20 @@
         .whatsapp-button:hover {
             background-color: #128C7E;
         }
+
+        
     </style>
 </head>
-<body>
-   
 
-    
-    
+<!-- Start of Selection -->
+<body">
+<!-- End of Selection -->
+    <style>
+    /* Custom scrollbar styles for WebKit browsers */
+    ::-webkit-scrollbar {
+     display: none;
+    }
+    </style>
     <!-- Main content -->
     <main>
          <!-- Navigation Bar -->
